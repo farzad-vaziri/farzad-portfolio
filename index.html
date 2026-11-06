@@ -89,21 +89,13 @@
     .site nav a:hover { color: var(--ink); }
     @media (max-width: 420px) { .site nav { gap: 12px; } .site nav a { font-size: 14px; } }
 
-    /* Hero / profile */
-    .hero { padding: 80px 0 72px; }
-    @media (min-width: 720px) { .hero { padding: 112px 0 88px; } }
-    .hero h1 { font-size: clamp(2rem, 5.6vw, 3.2rem); max-width: 22ch; }
+    /* Hero (short intro) */
     .nowrap { white-space: nowrap; }
-    .hero .profile { margin-top: 28px; }
-    .hero .profile p { margin: 0 0 1.1em; font-size: 1.08rem; }
-    .hero h2.sub { font-size: 1.35rem; margin: 40px 0 16px; }
-    .doing { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
-    .doing li { border-left: 3px solid var(--accent); padding-left: 18px; }
-    .doing strong { font-weight: 600; }
-    .hero .closing { margin-top: 36px; }
-    .hero .closing p { margin: 0 0 .6em; }
-    .hero .closing .measure-line { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; }
-    .hero .closing .lead-in { color: var(--muted); }
+    .hero { padding: 80px 0 64px; }
+    @media (min-width: 720px) { .hero { padding: 112px 0 80px; } }
+    .hero h1 { font-size: clamp(2rem, 5.6vw, 3.2rem); max-width: 22ch; }
+    .hero .intro { margin-top: 24px; }
+    .hero .intro p { margin: 0 0 .8em; font-size: 1.12rem; color: var(--muted); }
     .hero-actions { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
     .btn {
       display: inline-block; padding: 11px 20px; border-radius: 6px; text-decoration: none;
@@ -116,32 +108,37 @@
     section.block > .wrap > h2 { font-size: 1.75rem; margin-bottom: 8px; }
     .empty { min-height: 88px; border: 1.5px dashed var(--rule); border-radius: 6px; margin-top: 24px; }
 
-    /* Sample cards (work) */
-    .strand-title { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; }
-    .projects { display: grid; gap: 36px; margin-top: 32px; }
-    .project { border-left: 3px solid var(--accent); padding: 2px 0 2px 22px; }
-    .project-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
-    .project h3 { font-size: 1.3rem; }
-    .status { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
-    .project-preview { margin-top: 16px; aspect-ratio: 16 / 9; max-width: 560px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
-    .project-preview img, .project-preview video { width: 100%; height: 100%; object-fit: cover; }
-    .project p { margin: 10px 0 0; max-width: var(--measure); }
-    .project .note { font-size: 14px; color: var(--muted); }
-    .project-links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; font-weight: 600; }
-    .soon-list { list-style: none; padding: 0; margin: 40px 0 0; border-top: 1px solid var(--rule); }
-    .soon-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0 14px 25px; border-bottom: 1px solid var(--rule); border-left: 3px solid var(--rule); }
-    .soon-list .t { font-family: var(--serif); font-size: 1.08rem; }
-    .soon-list .s { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    /* Sample grid: 2 columns on phones, 3 on laptops */
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; margin-top: 28px; }
+    @media (min-width: 880px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; } }
+    .tile { min-width: 0; }
+    .tile-link { display: block; color: inherit; text-decoration: none; border-radius: 8px; }
+    .frame {
+      aspect-ratio: 16 / 10; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
+      background: var(--paper-2); transition: border-color .15s, box-shadow .15s;
+    }
+    .frame img, .frame video { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+    .frame.blank { background: repeating-linear-gradient(135deg, transparent 0 12px, color-mix(in srgb, var(--rule) 45%, transparent) 12px 13px), var(--paper-2); }
+    a.tile-link:hover .frame { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .tile-head { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+    .tile h3 { font-size: 1.02rem; line-height: 1.3; }
+    @media (min-width: 880px) { .tile h3 { font-size: 1.15rem; } }
+    a.tile-link:hover h3 { color: var(--accent); }
+    .status { font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+    .status.live { background: var(--accent-soft); color: var(--accent); }
+    .status.soon { background: var(--paper-2); color: var(--muted); border: 1px solid var(--rule); }
+    .tile p { margin: 6px 0 0; font-size: 14px; line-height: 1.5; }
+    .tile .note { color: var(--muted); font-size: 13px; }
+    .tile-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; font-weight: 600; }
+    .grid-note { margin: 28px 0 0; font-size: 14px; color: var(--muted); }
 
-    /* Featured samples */
-    .samples { display: grid; gap: 24px; grid-template-columns: 1fr; margin-top: 24px; }
-    @media (min-width: 720px) { .samples { grid-template-columns: repeat(3, 1fr); } }
-    .sample { margin: 0; }
-    .sample-media { aspect-ratio: 4 / 3; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
-    .sample-media img, .sample-media video { width: 100%; height: 100%; object-fit: cover; }
-    .sample-media iframe { width: 100%; height: 100%; border: 0; }
-    .sample figcaption { margin-top: 10px; font-size: 15px; }
-    .sample figcaption span { display: block; color: var(--muted); font-size: 14px; }
+    /* About (settled copy) */
+    .about p { margin: 16px 0 0; font-size: 1.05rem; }
+    .about h3 { font-size: 1.3rem; margin: 40px 0 16px; }
+    .doing { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+    .doing li { border-left: 3px solid var(--accent); padding-left: 18px; }
+    .doing strong { font-weight: 600; }
+    .about .measure-line { margin-top: 32px; font-family: var(--serif); font-size: 1.25rem; font-weight: 500; }
 
     /* Solutions */
     .solutions { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
@@ -176,38 +173,21 @@
       <a class="name" href="#top">Farzad Vaziri</a>
       <nav aria-label="Main">
         <a href="#work">Samples</a>
-        <a href="#solutions">Solutions</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- 1. HERO / PROFILE (settled copy: do not reword) -->
+    <!-- 1. HERO: title and short summary -->
     <section class="hero" id="top">
       <div class="wrap">
         <h1>Tech strategy. <span class="nowrap">Data-driven</span> decisions. AI and programme delivery.</h1>
-
-        <div class="profile measure">
-          <p>I work across the full life of a data and AI programme, starting well before the technology. That means working with leadership on business strategy and analysis: which problems are worth solving, what the options are, what the business case looks like and what the risks are. From there I shape the programme, build the analytics, models and intelligence behind it, and run the delivery so that what gets built changes how the business operates.</p>
-          <p>My background combines software engineering, data science and quantitative finance with senior advisory work on strategy, risk and investment decisions. I've led programmes and delivery teams, managed vendors and budgets, and run the stakeholder side of change: aligning executives, winning sign-off, and keeping the people affected on board through rollout. I've spent years translating technical results into options and recommendations for boards, investors and non-technical teams. I still write the code, which means the strategy I advise on is grounded in what can be built.</p>
+        <div class="intro measure">
+          <!-- Short summary (draft, edit freely). The last sentence is from the settled copy. -->
+          <p>I shape technology strategy, build data and AI systems, and lead the programmes that get them adopted. I work with leadership from the first business case through to rollout, and I still write the code. Below are live samples of my work: dashboards, AI tools and analyses you can open and explore.</p>
         </div>
-
-        <h2 class="sub">What I do</h2>
-        <ul class="doing measure">
-          <li><strong>Business strategy and analysis.</strong> Working with leadership to define the problem, appraise options, build the business case and set the measures of success. Strategic, financial and operational analysis that turns a direction into a plan.</li>
-          <li><strong>AI and data programme delivery.</strong> Owning the programme end to end: scoping, stakeholder alignment, vendor and budget control, rollout, training and handover. Governance, risk and assurance built into the plan from day one, so the result stands up to a board, an auditor or a regulator.</li>
-          <li><strong>Data-led decision making and business intelligence.</strong> Decision dashboards, KPI frameworks and executive reporting designed around the decision they support, and the insight work that converts analysis into recommendations leaders can act on.</li>
-          <li><strong>AI implementation.</strong> LLM applications, retrieval-augmented assistants and agent workflows deployed on real organisational data, with evaluation, guardrails and monitoring in place from the first release.</li>
-          <li><strong>Data science, econometrics and advanced analytics.</strong> Forecasting, causal analysis, experiment design, risk modelling and statistical modelling on financial, economic and operational data, with results that are defensible, not just predictive.</li>
-          <li><strong>Forward-deployed delivery.</strong> Embedding with a business or client team to turn a loose requirement into a working system: data integration, pipelines, APIs and the tooling around them, delivered alongside the people who will run it.</li>
-        </ul>
-
-        <div class="closing measure">
-          <p class="measure-line">The measure I care about is whether the system is still in use six months later.</p>
-          <p class="lead-in">Below are live samples of my work: dashboards, AI tools and analyses you can open and explore.</p>
-        </div>
-
         <div class="hero-actions">
           <a class="btn" href="#work">Open the samples</a>
           <a href="#contact">Get in touch</a>
@@ -215,23 +195,37 @@
       </div>
     </section>
 
-    <!-- 2. SAMPLE CARDS (built from the PROJECTS list in the script at the bottom) -->
+    <!-- 2. SAMPLES GRID (built from the PROJECTS list in the script at the bottom) -->
     <section class="block" id="work">
       <div class="wrap">
-        <h2>Selected work</h2>
-        <div id="projects"></div>
+        <h2>Samples</h2>
+        <div class="grid" id="projects"></div>
+        <p class="grid-note">Live apps open in a new tab and may take up to 30 seconds to wake.</p>
       </div>
     </section>
 
-    <!-- 2b. FEATURED SAMPLES (filled from the SAMPLES list in the script at the bottom) -->
-    <section class="block" id="samples">
+    <!-- 3. ABOUT (settled copy from the handover: do not reword) -->
+    <section class="block" id="about">
       <div class="wrap">
-        <h2>Featured samples</h2>
-        <div class="samples" id="samples-grid"></div>
+        <h2>About</h2>
+        <div class="about measure">
+          <p>I work across the full life of a data and AI programme, starting well before the technology. That means working with leadership on business strategy and analysis: which problems are worth solving, what the options are, what the business case looks like and what the risks are. From there I shape the programme, build the analytics, models and intelligence behind it, and run the delivery so that what gets built changes how the business operates.</p>
+          <p>My background combines software engineering, data science and quantitative finance with senior advisory work on strategy, risk and investment decisions. I've led programmes and delivery teams, managed vendors and budgets, and run the stakeholder side of change: aligning executives, winning sign-off, and keeping the people affected on board through rollout. I've spent years translating technical results into options and recommendations for boards, investors and non-technical teams. I still write the code, which means the strategy I advise on is grounded in what can be built.</p>
+          <h3>What I do</h3>
+          <ul class="doing">
+          <li><strong>Business strategy and analysis.</strong> Working with leadership to define the problem, appraise options, build the business case and set the measures of success. Strategic, financial and operational analysis that turns a direction into a plan.</li>
+          <li><strong>AI and data programme delivery.</strong> Owning the programme end to end: scoping, stakeholder alignment, vendor and budget control, rollout, training and handover. Governance, risk and assurance built into the plan from day one, so the result stands up to a board, an auditor or a regulator.</li>
+          <li><strong>Data-led decision making and business intelligence.</strong> Decision dashboards, KPI frameworks and executive reporting designed around the decision they support, and the insight work that converts analysis into recommendations leaders can act on.</li>
+          <li><strong>AI implementation.</strong> LLM applications, retrieval-augmented assistants and agent workflows deployed on real organisational data, with evaluation, guardrails and monitoring in place from the first release.</li>
+          <li><strong>Data science, econometrics and advanced analytics.</strong> Forecasting, causal analysis, experiment design, risk modelling and statistical modelling on financial, economic and operational data, with results that are defensible, not just predictive.</li>
+          <li><strong>Forward-deployed delivery.</strong> Embedding with a business or client team to turn a loose requirement into a working system: data integration, pipelines, APIs and the tooling around them, delivered alongside the people who will run it.</li>
+        </ul>
+          <p class="measure-line">The measure I care about is whether the system is still in use six months later.</p>
+        </div>
       </div>
     </section>
 
-    <!-- 3. SOLUTIONS I'VE DELIVERED -->
+    <!-- 4. SOLUTIONS I'VE DELIVERED -->
     <section class="block" id="solutions">
       <div class="wrap">
         <h2>Solutions I've delivered</h2>
@@ -248,7 +242,7 @@
       </div>
     </section>
 
-    <!-- 4. TOOLS AND TECHNOLOGIES -->
+    <!-- 5. TOOLS AND TECHNOLOGIES -->
     <section class="block" id="tools">
       <div class="wrap">
         <h2>Tools and technologies</h2>
@@ -289,7 +283,7 @@
       </div>
     </section>
 
-    <!-- 5. GAMES (kept separate from the work above) -->
+    <!-- 6. GAMES (kept separate from the work above) -->
     <section class="block" id="games">
       <div class="wrap">
         <h2>Games</h2>
@@ -297,7 +291,7 @@
       </div>
     </section>
 
-    <!-- 6. CONTACT -->
+    <!-- 7. CONTACT -->
     <section class="block" id="contact">
       <div class="wrap">
         <h2>Contact</h2>
@@ -324,96 +318,62 @@
 
   <script>
     /* =====================================================================
-       PROJECTS: the only place to edit the Selected work cards.
-       One entry per project. Fields left as "" are not shown.
+       SAMPLES: the only place to edit the sample grid.
+       One entry per tile, shown in this order. Fields left as "" are hidden.
 
          status    "live" or "soon"
-         strand    optional grouping label, e.g. "Analytics", "AI implementation"
+         preview   screenshot path, e.g. "assets/previews/student-migration.webp"
          question  one line: the question it answers
          action    one line: what the visitor can do
-         dataNote  e.g. "Built on public ONS and HESA data." or "Synthetic data."
-         preview   image or GIF path, e.g. "assets/previews/student-migration.gif"
-         links     dashboard, repo, notebook (full URLs)
+         dataNote  e.g. "Built on public data." or "Synthetic data."
+         links     dashboard (the tile opens this), repo, notebook
 
        Rule: any project that used employer data must be rebuilt on public
        or synthetic data before it goes live.
        ===================================================================== */
     const PROJECTS = [
-      { id: "student-migration",      title: "UK student migration",              status: "live", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
-      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } }
-    ];
-
-    /* FEATURED SAMPLES: 2–3 real outputs. Use "media" for an image/GIF,
-       or "embed" for a small self-contained HTML chart in assets/samples/. */
-    const SAMPLES = [
-      { title: "UK student migration", caption: "", media: "", embed: "", link: "" },
-      { title: "", caption: "", media: "", embed: "", link: "" },
-      { title: "", caption: "", media: "", embed: "", link: "" }
+      { id: "student-migration",      title: "UK student migration",              status: "live", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
+      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } }
     ];
 
     /* ---------- rendering (no need to edit below) ---------- */
     (function () {
       const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+      const ext = (a, href) => { a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
       const mediaEl = (src, alt) => {
         if (/\.(mp4|webm)$/i.test(src)) { const v = el("video"); Object.assign(v, { src, autoplay: true, muted: true, loop: true, playsInline: true }); v.setAttribute("aria-label", alt); return v; }
         const i = el("img"); Object.assign(i, { src, alt, loading: "lazy", decoding: "async" }); return i;
       };
-      const link = (text, href) => { const a = el("a", null, text); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
 
-      const root = document.getElementById("projects");
-      const live = PROJECTS.filter(p => p.status === "live");
-      const soon = PROJECTS.filter(p => p.status !== "live");
-
-      function projectCard(p) {
-        const art = el("article", "project"); art.id = "project-" + p.id;
-        const head = el("div", "project-head");
-        head.appendChild(el("h3", null, p.title));
-        head.appendChild(el("span", "status", "Live"));
-        art.appendChild(head);
-        if (p.preview) { const f = el("div", "project-preview"); f.appendChild(mediaEl(p.preview, p.title + " preview")); art.appendChild(f); }
-        if (p.question) art.appendChild(el("p", null, p.question));
-        if (p.action) art.appendChild(el("p", null, p.action));
-        if (p.dataNote) art.appendChild(el("p", "note", p.dataNote));
+      const grid = document.getElementById("projects");
+      PROJECTS.forEach(p => {
+        const live = p.status === "live";
         const L = p.links || {};
-        const ls = [["Open live app", L.dashboard], ["View code on GitHub", L.repo], ["Notebook", L.notebook]].filter(x => x[1]);
-        if (ls.length) { const box = el("div", "project-links"); ls.forEach(([t, h]) => box.appendChild(link(t, h))); art.appendChild(box); }
-        return art;
-      }
+        const tile = el("article", "tile"); tile.id = "project-" + p.id;
 
-      const grouped = live.length > 0 && live.every(p => p.strand) && PROJECTS.length > 4;
-      if (grouped) {
-        [...new Set(live.map(p => p.strand))].forEach(s => {
-          root.appendChild(el("h3", "strand-title", s));
-          const g = el("div", "projects"); live.filter(p => p.strand === s).forEach(p => g.appendChild(projectCard(p))); root.appendChild(g);
-        });
-      } else {
-        const g = el("div", "projects"); live.forEach(p => g.appendChild(projectCard(p))); root.appendChild(g);
-      }
-      if (soon.length) {
-        const ul = el("ul", "soon-list");
-        soon.forEach(p => { const li = el("li"); li.id = "project-" + p.id; li.appendChild(el("span", "t", p.title)); li.appendChild(el("span", "s", "Coming soon")); ul.appendChild(li); });
-        root.appendChild(ul);
-      }
+        // Frame + title: one link to the live app when there is one
+        const top = L.dashboard ? ext(el("a", "tile-link"), L.dashboard) : el("div", "tile-link");
+        const frame = el("div", "frame" + (p.preview ? "" : " blank"));
+        if (p.preview) frame.appendChild(mediaEl(p.preview, p.title + " screenshot"));
+        top.appendChild(frame);
+        const head = el("div", "tile-head");
+        head.appendChild(el("h3", null, p.title));
+        head.appendChild(el("span", "status " + (live ? "live" : "soon"), live ? "Live" : "Coming soon"));
+        top.appendChild(head);
+        tile.appendChild(top);
 
-      const sg = document.getElementById("samples-grid");
-      SAMPLES.forEach(s => {
-        const fig = el("figure", "sample");
-        const frame = el("div", "sample-media");
-        if (s.embed) { const f = el("iframe"); Object.assign(f, { src: s.embed, title: s.title || "Sample", loading: "lazy" }); frame.appendChild(f); }
-        else if (s.media) frame.appendChild(mediaEl(s.media, s.title || "Sample"));
-        fig.appendChild(frame);
-        if (s.title || s.caption) {
-          const cap = el("figcaption");
-          if (s.title) cap.appendChild(s.link ? link(s.title, s.link) : el("strong", null, s.title));
-          if (s.caption) cap.appendChild(el("span", null, s.caption));
-          fig.appendChild(cap);
-        }
-        sg.appendChild(fig);
+        if (p.question) tile.appendChild(el("p", null, p.question));
+        if (p.action) tile.appendChild(el("p", null, p.action));
+        if (p.dataNote) tile.appendChild(el("p", "note", p.dataNote));
+        const extra = [["Code", L.repo], ["Notebook", L.notebook]].filter(x => x[1]);
+        if (extra.length) { const box = el("div", "tile-links"); extra.forEach(([t, h]) => box.appendChild(ext(el("a", null, t), h))); tile.appendChild(box); }
+
+        grid.appendChild(tile);
       });
 
       document.getElementById("year").textContent = new Date().getFullYear();
