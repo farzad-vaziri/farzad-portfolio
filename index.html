@@ -1,21 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Farzad Vaziri | Data, AI and Project Delivery</title>
-  <meta name="description" content="Farzad Vaziri builds and implements analytics and AI systems, and manages the projects that get them adopted.">
+  <title>Farzad Vaziri | Tech Strategy, Data-Driven Decisions, AI and Programme Delivery</title>
+  <meta name="description" content="Farzad Vaziri shapes technology strategy, builds data and AI systems, and leads the programmes that get them adopted.">
   <link rel="canonical" href="https://farzadvaziri.com/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://farzadvaziri.com/">
-  <meta property="og:title" content="Farzad Vaziri | Data, AI and Project Delivery">
-  <meta property="og:description" content="Building and implementing analytics and AI systems, and managing the projects that get them adopted.">
+  <meta property="og:title" content="Farzad Vaziri | Tech Strategy, Data-Driven Decisions, AI and Programme Delivery">
+  <meta property="og:description" content="Farzad Vaziri shapes technology strategy, builds data and AI systems, and leads the programmes that get them adopted.">
   <meta property="og:site_name" content="Farzad Vaziri">
-  <!-- [[og:image: add <meta property="og:image" content="https://farzadvaziri.com/assets/og.png"> once a share image exists]] -->
 
-  <!-- Person structured data. sameAs stays empty until LinkedIn / GitHub / Kaggle are activated. -->
+  <!-- Person structured data. sameAs stays empty until LinkedIn / GitHub / Kaggle are added. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,7 +22,7 @@
     "name": "Farzad Vaziri",
     "url": "https://farzadvaziri.com/",
     "email": "mailto:hello@farzadvaziri.com",
-    "jobTitle": "Data, AI and Project Delivery",
+    "description": "Farzad Vaziri shapes technology strategy, builds data and AI systems, and leads the programmes that get them adopted.",
     "address": { "@type": "PostalAddress", "addressCountry": "GB" },
     "sameAs": []
   }
@@ -45,7 +44,7 @@
       --focus: #1d6b6b;
       --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
       --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --measure: 68ch;
+      --measure: 70ch;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -84,17 +83,28 @@
       backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule);
     }
     .site-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
-    .name { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
-    .site nav { display: flex; gap: 22px; }
+    .name { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--ink); text-decoration: none; white-space: nowrap; }
+    .site nav { display: flex; gap: 18px; }
     .site nav a { color: var(--muted); text-decoration: none; font-size: 15px; padding: 6px 0; }
     .site nav a:hover { color: var(--ink); }
+    @media (max-width: 420px) { .site nav { gap: 12px; } .site nav a { font-size: 14px; } }
 
-    /* Hero */
-    .hero { padding: 88px 0 72px; }
-    @media (min-width: 720px) { .hero { padding: 128px 0 96px; } }
-    .hero h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); max-width: 18ch; }
-    .hero p { margin: 24px 0 0; font-size: 1.12rem; color: var(--muted); }
-    .hero-actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+    /* Hero / profile */
+    .hero { padding: 80px 0 72px; }
+    @media (min-width: 720px) { .hero { padding: 112px 0 88px; } }
+    .hero h1 { font-size: clamp(2rem, 5.6vw, 3.2rem); max-width: 22ch; }
+    .nowrap { white-space: nowrap; }
+    .hero .profile { margin-top: 28px; }
+    .hero .profile p { margin: 0 0 1.1em; font-size: 1.08rem; }
+    .hero h2.sub { font-size: 1.35rem; margin: 40px 0 16px; }
+    .doing { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+    .doing li { border-left: 3px solid var(--accent); padding-left: 18px; }
+    .doing strong { font-weight: 600; }
+    .hero .closing { margin-top: 36px; }
+    .hero .closing p { margin: 0 0 .6em; }
+    .hero .closing .measure-line { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; }
+    .hero .closing .lead-in { color: var(--muted); }
+    .hero-actions { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
     .btn {
       display: inline-block; padding: 11px 20px; border-radius: 6px; text-decoration: none;
       background: var(--accent); color: var(--paper); font-weight: 600; font-size: 15px;
@@ -104,10 +114,9 @@
     /* Sections */
     section.block { padding: 64px 0; border-top: 1px solid var(--rule); }
     section.block > .wrap > h2 { font-size: 1.75rem; margin-bottom: 8px; }
-    .lede { color: var(--muted); margin: 0 0 32px; }
-    .empty { min-height: 88px; border: 1.5px dashed var(--rule); border-radius: 6px; }
+    .empty { min-height: 88px; border: 1.5px dashed var(--rule); border-radius: 6px; margin-top: 24px; }
 
-    /* Work */
+    /* Sample cards (work) */
     .strand-title { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; }
     .projects { display: grid; gap: 36px; margin-top: 32px; }
     .project { border-left: 3px solid var(--accent); padding: 2px 0 2px 22px; }
@@ -116,19 +125,16 @@
     .status { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
     .project-preview { margin-top: 16px; aspect-ratio: 16 / 9; max-width: 560px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
     .project-preview img, .project-preview video { width: 100%; height: 100%; object-fit: cover; }
-    .fields { margin: 14px 0 0; display: grid; gap: 10px; max-width: var(--measure); }
-    .fields div { display: grid; gap: 2px; }
-    @media (min-width: 720px) { .fields div { grid-template-columns: 120px 1fr; gap: 16px; } }
-    .fields dt { font-size: 14px; font-weight: 600; color: var(--muted); }
-    .fields dd { margin: 0; }
+    .project p { margin: 10px 0 0; max-width: var(--measure); }
+    .project .note { font-size: 14px; color: var(--muted); }
     .project-links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; font-weight: 600; }
-    .soon-list { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+    .soon-list { list-style: none; padding: 0; margin: 40px 0 0; border-top: 1px solid var(--rule); }
     .soon-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0 14px 25px; border-bottom: 1px solid var(--rule); border-left: 3px solid var(--rule); }
     .soon-list .t { font-family: var(--serif); font-size: 1.08rem; }
     .soon-list .s { font-size: 13px; color: var(--muted); white-space: nowrap; }
 
-    /* Samples */
-    .samples { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    /* Featured samples */
+    .samples { display: grid; gap: 24px; grid-template-columns: 1fr; margin-top: 24px; }
     @media (min-width: 720px) { .samples { grid-template-columns: repeat(3, 1fr); } }
     .sample { margin: 0; }
     .sample-media { aspect-ratio: 4 / 3; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
@@ -137,22 +143,24 @@
     .sample figcaption { margin-top: 10px; font-size: 15px; }
     .sample figcaption span { display: block; color: var(--muted); font-size: 14px; }
 
-    /* About */
-    .about p { margin: 0 0 1em; }
+    /* Solutions */
+    .solutions { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+    .solutions li { padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+    .solutions li:last-child { border-bottom: 0; }
+    .solutions strong { display: block; font-family: var(--serif); font-weight: 600; font-size: 1.08rem; }
+    .solutions span { color: var(--muted); }
 
     /* Tools */
     .tools { display: grid; gap: 28px; margin-top: 24px; }
     @media (min-width: 720px) { .tools { grid-template-columns: 1fr 1fr; gap: 32px 48px; } }
-    .tools h3 { font-family: var(--sans); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    .tools ul { margin: 0; padding-left: 18px; color: var(--ink); }
-    .tools li { margin: 3px 0; }
-    .tools li::marker { color: var(--accent); }
+    .tools h3 { font-family: var(--sans); font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .tools p { margin: 0; color: var(--muted); font-size: 15.5px; }
 
     /* Contact */
-    .contact { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+    .contact-lead { margin: 16px 0 0; font-size: 1.08rem; }
+    .contact { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
     .contact li { display: flex; gap: 16px; align-items: baseline; }
     .contact .k { min-width: 88px; color: var(--muted); font-size: 15px; }
-    .contact .off { color: var(--muted); opacity: .65; }
 
     footer.site-foot { border-top: 1px solid var(--rule); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
     footer.site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
@@ -167,29 +175,47 @@
     <div class="wrap site-inner">
       <a class="name" href="#top">Farzad Vaziri</a>
       <nav aria-label="Main">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
+        <a href="#work">Samples</a>
+        <a href="#solutions">Solutions</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- 1. OPENING STATEMENT -->
+    <!-- 1. HERO / PROFILE (settled copy: do not reword) -->
     <section class="hero" id="top">
       <div class="wrap">
-        <h1>Turning data and AI into tools organisations actually use.</h1>
-        <div class="measure">
-          <p>I build and implement analytics and AI systems, and I manage the projects that get them adopted. That means starting from the question an organisation needs answered, working through the data and the model, and finishing with something people rely on day to day.</p>
+        <h1>Tech strategy. <span class="nowrap">Data-driven</span> decisions. AI and programme delivery.</h1>
+
+        <div class="profile measure">
+          <p>I work across the full life of a data and AI programme, starting well before the technology. That means working with leadership on business strategy and analysis: which problems are worth solving, what the options are, what the business case looks like and what the risks are. From there I shape the programme, build the analytics, models and intelligence behind it, and run the delivery so that what gets built changes how the business operates.</p>
+          <p>My background combines software engineering, data science and quantitative finance with senior advisory work on strategy, risk and investment decisions. I've led programmes and delivery teams, managed vendors and budgets, and run the stakeholder side of change: aligning executives, winning sign-off, and keeping the people affected on board through rollout. I've spent years translating technical results into options and recommendations for boards, investors and non-technical teams. I still write the code, which means the strategy I advise on is grounded in what can be built.</p>
         </div>
+
+        <h2 class="sub">What I do</h2>
+        <ul class="doing measure">
+          <li><strong>Business strategy and analysis.</strong> Working with leadership to define the problem, appraise options, build the business case and set the measures of success. Strategic, financial and operational analysis that turns a direction into a plan.</li>
+          <li><strong>AI and data programme delivery.</strong> Owning the programme end to end: scoping, stakeholder alignment, vendor and budget control, rollout, training and handover. Governance, risk and assurance built into the plan from day one, so the result stands up to a board, an auditor or a regulator.</li>
+          <li><strong>Data-led decision making and business intelligence.</strong> Decision dashboards, KPI frameworks and executive reporting designed around the decision they support, and the insight work that converts analysis into recommendations leaders can act on.</li>
+          <li><strong>AI implementation.</strong> LLM applications, retrieval-augmented assistants and agent workflows deployed on real organisational data, with evaluation, guardrails and monitoring in place from the first release.</li>
+          <li><strong>Data science, econometrics and advanced analytics.</strong> Forecasting, causal analysis, experiment design, risk modelling and statistical modelling on financial, economic and operational data, with results that are defensible, not just predictive.</li>
+          <li><strong>Forward-deployed delivery.</strong> Embedding with a business or client team to turn a loose requirement into a working system: data integration, pipelines, APIs and the tooling around them, delivered alongside the people who will run it.</li>
+        </ul>
+
+        <div class="closing measure">
+          <p class="measure-line">The measure I care about is whether the system is still in use six months later.</p>
+          <p class="lead-in">Below are live samples of my work: dashboards, AI tools and analyses you can open and explore.</p>
+        </div>
+
         <div class="hero-actions">
-          <a class="btn" href="#work">See my work</a>
+          <a class="btn" href="#work">Open the samples</a>
           <a href="#contact">Get in touch</a>
         </div>
       </div>
     </section>
 
-    <!-- 2. SELECTED WORK (cards are built from the PROJECTS list in the script at the bottom) -->
+    <!-- 2. SAMPLE CARDS (built from the PROJECTS list in the script at the bottom) -->
     <section class="block" id="work">
       <div class="wrap">
         <h2>Selected work</h2>
@@ -197,7 +223,7 @@
       </div>
     </section>
 
-    <!-- 3. FEATURED SAMPLES (filled from the SAMPLES list in the script at the bottom) -->
+    <!-- 2b. FEATURED SAMPLES (filled from the SAMPLES list in the script at the bottom) -->
     <section class="block" id="samples">
       <div class="wrap">
         <h2>Featured samples</h2>
@@ -205,95 +231,65 @@
       </div>
     </section>
 
-    <!-- 4. ABOUT -->
-    <section class="block" id="about">
-      <div class="wrap"><div class="measure about">
-        <h2>About</h2>
-        <p>I work where data, AI and delivery meet. I take a problem from the first conversation to a working tool: shaping the question, building the analysis or model, and managing the rollout so the people who need it actually use it.</p>
-        <p>I explain things in plain English, keep stakeholders close throughout, and care more about what gets adopted than what looks impressive. I most enjoy working with [[charities, policy bodies, corporates and SMEs: confirm]] that want their data to change how they make decisions.</p>
-        <!-- ACADEMIC LINES GO HERE LATER (PhD, lecturing, publications). Intentionally left out for now. -->
-      </div></div>
+    <!-- 3. SOLUTIONS I'VE DELIVERED -->
+    <section class="block" id="solutions">
+      <div class="wrap">
+        <h2>Solutions I've delivered</h2>
+        <ul class="solutions measure">
+          <li><strong>Business strategy and transformation</strong> <span>Strategic analysis, options appraisal, business cases, operating-model and process redesign, change and adoption planning</span></li>
+          <li><strong>Risk management</strong> <span>Risk scoring and monitoring, scenario and stress analysis, model validation</span></li>
+          <li><strong>Financial and investment analytics</strong> <span>Valuation, portfolio and performance analysis, financial forecasting</span></li>
+          <li><strong>Strategic decision support</strong> <span>Market and pricing analysis, cost-benefit and value-for-money assessment</span></li>
+          <li><strong>Operational analytics</strong> <span>KPI design, process and efficiency analysis, automated management reporting</span></li>
+          <li><strong>Customer and market insight</strong> <span>Segmentation, survey analysis, demand forecasting</span></li>
+          <li><strong>AI-enabled workflows</strong> <span>Document intelligence, knowledge assistants, automation of reporting and review tasks</span></li>
+          <li><strong>Policy and economic analysis</strong> <span>Impact evaluation, public-finance and economic modelling</span></li>
+        </ul>
+      </div>
     </section>
 
-    <!-- 5. WHAT I WORK WITH -->
+    <!-- 4. TOOLS AND TECHNOLOGIES -->
     <section class="block" id="tools">
       <div class="wrap">
-        <h2>What I work with</h2>
+        <h2>Tools and technologies</h2>
         <div class="tools">
           <div>
-            <h3>Analysis and modelling</h3>
-            <ul>
-              <li>SQL</li>
-              <li>Python (pandas, scikit-learn, statsmodels)</li>
-              <li>R and Stata</li>
-              <li>Econometrics and statistical modelling</li>
-              <li>Forecasting</li>
-              <li>A/B testing and evaluation design</li>
-              <li>Advanced Excel</li>
-            </ul>
+            <h3>Languages and core</h3>
+            <p>Python (pandas, NumPy, scikit-learn, statsmodels, PyTorch), SQL (T-SQL, PostgreSQL, Spark SQL), R, Stata, Bash, Git and GitHub, Docker</p>
+          </div>
+          <div>
+            <h3>AI and LLM engineering</h3>
+            <p>OpenAI and Anthropic APIs, Azure OpenAI, LangChain, LangGraph, LlamaIndex, vector stores (pgvector, FAISS, Chroma), retrieval-augmented generation, agent and tool-use workflows, prompt and evaluation design, LLM evaluation and monitoring, Hugging Face Transformers, fine-tuning and embeddings</p>
+          </div>
+          <div>
+            <h3>Machine learning</h3>
+            <p>Supervised and unsupervised learning, gradient boosting (XGBoost, LightGBM), neural networks, time-series forecasting (ARIMA, Prophet, boosted models), clustering and segmentation, model validation and explainability (SHAP), MLflow</p>
+          </div>
+          <div>
+            <h3>Econometrics and advanced quantitative methods</h3>
+            <p>Panel data models (fixed and random effects, dynamic panels, GMM), difference-in-differences, instrumental variables, regression discontinuity, synthetic control, event studies, time-series econometrics (VAR, cointegration, GARCH), limited dependent variable models (logit, probit, tobit), survival analysis, structural equation modelling, Bayesian methods, network analysis (centrality, community detection, network regression), multilevel and hierarchical models, text-as-data and survey methods, Monte Carlo simulation</p>
           </div>
           <div>
             <h3>Financial and economic data</h3>
-            <ul>
-              <li>Bloomberg Terminal</li>
-              <li>Public finance and economic data (ONS, World Bank, IMF)</li>
-              <li>Survey data</li>
-            </ul>
+            <p>Bloomberg Terminal, Refinitiv/LSEG Workspace, Compustat and CRSP (via WRDS), FactSet, ONS, Bank of England, HM Treasury and OBR, World Bank, IMF, OECD, Eurostat, BIS, FRED, company accounts and regulatory filings, survey and administrative microdata</p>
           </div>
           <div>
-            <h3>Dashboards and reporting</h3>
-            <ul>
-              <li>Power BI and Tableau</li>
-              <li>Microsoft Fabric</li>
-              <li>Automated reports and Excel reporting</li>
-              <li>Executive summaries for non-technical readers</li>
-            </ul>
+            <h3>Data engineering and platforms</h3>
+            <p>Microsoft Fabric, Databricks, Apache Spark, Azure (Data Factory, Synapse, Functions, Blob Storage), AWS (S3, Lambda, Glue, SageMaker), dbt, Airflow, REST APIs, ETL/ELT pipeline design, data modelling and warehousing</p>
           </div>
           <div>
-            <h3>Data platforms and cloud</h3>
-            <ul>
-              <li>Microsoft Fabric and Databricks</li>
-              <li>AWS [[confirm which services]]</li>
-              <li>Azure [[confirm]]</li>
-              <li>SQL databases and data pipelines</li>
-              <li>Version control with Git and GitHub</li>
-            </ul>
+            <h3>Business intelligence and visualisation</h3>
+            <p>Power BI (DAX, Power Query), Tableau, Streamlit, Plotly, Dash, automated Excel reporting, executive reporting for non-technical readers</p>
           </div>
           <div>
-            <h3>AI implementation</h3>
-            <ul>
-              <li>LLM applications with the OpenAI and Anthropic APIs [[confirm]]</li>
-              <li>Retrieval-augmented generation and agents [[confirm]]</li>
-              <li>Prompt and workflow design</li>
-              <li>Machine learning models in production [[confirm]]</li>
-              <li>Evaluation and governance of AI tools [[confirm]]</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Project delivery</h3>
-            <ul>
-              <li>End-to-end ownership, from scoping to adoption</li>
-              <li>Stakeholder management and requirements gathering</li>
-              <li>Agile and waterfall delivery</li>
-              <li>Vendor and budget management</li>
-              <li>Training non-technical teams</li>
-              <li>[[CV line 1: employer type, what was delivered, scale or outcome]]</li>
-              <li>[[CV line 2]]</li>
-              <li>[[CV line 3]]</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Certifications</h3>
-            <ul>
-              <li>Google Advanced Data Analytics</li>
-              <li>[[any others: confirm]]</li>
-            </ul>
+            <h3>Delivery and governance</h3>
+            <p>Agile and waterfall delivery, Jira, Azure DevOps, Notion, requirements gathering, vendor and budget management, AI governance, risk and assurance frameworks, data protection and model risk documentation, user training and handover</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. GAMES (kept separate from the work above) -->
+    <!-- 5. GAMES (kept separate from the work above) -->
     <section class="block" id="games">
       <div class="wrap">
         <h2>Games</h2>
@@ -301,19 +297,19 @@
       </div>
     </section>
 
-    <!-- 7. CONTACT -->
+    <!-- 6. CONTACT -->
     <section class="block" id="contact">
       <div class="wrap">
         <h2>Contact</h2>
+        <p class="contact-lead measure">If you're a leader with a data or AI problem that isn't landing, get in touch.</p>
         <ul class="contact">
-          <!-- [[Email forwarding for hello@farzadvaziri.com to be set up in Spaceship]] -->
+          <!-- Email forwarding for hello@farzadvaziri.com still to be set up in Spaceship. -->
           <li><span class="k">Email</span><a href="mailto:hello@farzadvaziri.com">hello@farzadvaziri.com</a></li>
-          <!-- To activate: replace the span with <a href="[[LinkedIn URL]]">LinkedIn</a> -->
-          <li><span class="k">LinkedIn</span><span class="off" aria-disabled="true">Coming soon</span></li>
-          <!-- To activate: replace the span with <a href="[[GitHub URL]]">GitHub</a> -->
-          <li><span class="k">GitHub</span><span class="off" aria-disabled="true">Coming soon</span></li>
-          <!-- To activate: replace the span with <a href="[[Kaggle URL]]">Kaggle</a> -->
-          <li><span class="k">Kaggle</span><span class="off" aria-disabled="true">Coming soon</span></li>
+          <!-- To add later, paste a row like these with the real URL:
+          <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/YOUR-PROFILE/">LinkedIn</a></li>
+          <li><span class="k">GitHub</span><a href="https://github.com/farzad-vaziri">GitHub</a></li>
+          <li><span class="k">Kaggle</span><a href="https://www.kaggle.com/YOUR-PROFILE">Kaggle</a></li>
+          -->
         </ul>
       </div>
     </section>
@@ -328,28 +324,28 @@
 
   <script>
     /* =====================================================================
-       PROJECTS: the only place to edit the Selected work section.
+       PROJECTS: the only place to edit the Selected work cards.
        One entry per project. Fields left as "" are not shown.
 
-         status   "live" or "soon"
-         strand   "Analytics", "AI implementation", "Cloud" or "Delivery"
-                  (live projects are grouped by strand once strands are set)
-         problem / did / result   one or two plain-English sentences each
-         preview  image or GIF path, e.g. "assets/previews/student-migration.gif"
-         links    dashboard, repo, notebook (full URLs)
+         status    "live" or "soon"
+         strand    optional grouping label, e.g. "Analytics", "AI implementation"
+         question  one line: the question it answers
+         action    one line: what the visitor can do
+         dataNote  e.g. "Built on public ONS and HESA data." or "Synthetic data."
+         preview   image or GIF path, e.g. "assets/previews/student-migration.gif"
+         links     dashboard, repo, notebook (full URLs)
 
        Rule: any project that used employer data must be rebuilt on public
        or synthetic data before it goes live.
-       Order: most business-relevant first; pure-code projects lower down.
        ===================================================================== */
     const PROJECTS = [
-      { id: "student-migration",      title: "UK student migration",              status: "live", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
-      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } }
+      { id: "student-migration",      title: "UK student migration",              status: "live", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
+      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "soon", strand: "", question: "", action: "", dataNote: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } }
     ];
 
     /* FEATURED SAMPLES: 2–3 real outputs. Use "media" for an image/GIF,
@@ -369,7 +365,6 @@
       };
       const link = (text, href) => { const a = el("a", null, text); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
 
-      // Selected work
       const root = document.getElementById("projects");
       const live = PROJECTS.filter(p => p.status === "live");
       const soon = PROJECTS.filter(p => p.status !== "live");
@@ -381,12 +376,9 @@
         head.appendChild(el("span", "status", "Live"));
         art.appendChild(head);
         if (p.preview) { const f = el("div", "project-preview"); f.appendChild(mediaEl(p.preview, p.title + " preview")); art.appendChild(f); }
-        const rows = [["The problem", p.problem], ["What I did", p.did], ["The result", p.result]].filter(r => r[1]);
-        if (rows.length) {
-          const dl = el("dl", "fields");
-          rows.forEach(([k, v]) => { const d = el("div"); d.appendChild(el("dt", null, k)); d.appendChild(el("dd", null, v)); dl.appendChild(d); });
-          art.appendChild(dl);
-        }
+        if (p.question) art.appendChild(el("p", null, p.question));
+        if (p.action) art.appendChild(el("p", null, p.action));
+        if (p.dataNote) art.appendChild(el("p", "note", p.dataNote));
         const L = p.links || {};
         const ls = [["Open live app", L.dashboard], ["View code on GitHub", L.repo], ["Notebook", L.notebook]].filter(x => x[1]);
         if (ls.length) { const box = el("div", "project-links"); ls.forEach(([t, h]) => box.appendChild(link(t, h))); art.appendChild(box); }
@@ -408,7 +400,6 @@
         root.appendChild(ul);
       }
 
-      // Featured samples
       const sg = document.getElementById("samples-grid");
       SAMPLES.forEach(s => {
         const fig = el("figure", "sample");
