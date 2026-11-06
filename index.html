@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farzad Vaziri | Data, AI and Project Delivery</title>
+  <meta name="description" content="Farzad Vaziri builds and implements analytics and AI systems, and manages the projects that get them adopted.">
+  <link rel="canonical" href="https://farzadvaziri.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://farzadvaziri.com/">
+  <meta property="og:title" content="Farzad Vaziri | Data, AI and Project Delivery">
+  <meta property="og:description" content="Building and implementing analytics and AI systems, and managing the projects that get them adopted.">
+  <meta property="og:site_name" content="Farzad Vaziri">
+  <!-- [[og:image: add <meta property="og:image" content="https://farzadvaziri.com/assets/og.png"> once a share image exists]] -->
+
+  <!-- Person structured data. sameAs stays empty until LinkedIn / GitHub / Kaggle are activated. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Farzad Vaziri",
+    "url": "https://farzadvaziri.com/",
+    "email": "mailto:hello@farzadvaziri.com",
+    "jobTitle": "Data, AI and Project Delivery",
+    "address": { "@type": "PostalAddress", "addressCountry": "GB" },
+    "sameAs": []
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f6f4ef;
+      --paper-2: #efece5;
+      --ink: #1d2124;
+      --muted: #5c6369;
+      --rule: #dcd8cf;
+      --accent: #1d6b6b;
+      --accent-soft: #d9e9e6;
+      --focus: #1d6b6b;
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --measure: 68ch;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #161a1b;
+        --paper-2: #1c2122;
+        --ink: #e7e5df;
+        --muted: #a0a7aa;
+        --rule: #2f3537;
+        --accent: #6cc2b8;
+        --accent-soft: #1f3533;
+        --focus: #6cc2b8;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font: 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.2; margin: 0; letter-spacing: -0.005em; }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    img, video, iframe { display: block; max-width: 100%; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+    .skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--paper); padding: 8px 12px; z-index: 20; }
+    .skip:focus { left: 16px; }
+
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 720px) { .wrap { padding: 0 40px; } }
+    .measure { max-width: var(--measure); }
+
+    /* Header */
+    header.site {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule);
+    }
+    .site-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; }
+    .name { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .site nav { display: flex; gap: 22px; }
+    .site nav a { color: var(--muted); text-decoration: none; font-size: 15px; padding: 6px 0; }
+    .site nav a:hover { color: var(--ink); }
+
+    /* Hero */
+    .hero { padding: 88px 0 72px; }
+    @media (min-width: 720px) { .hero { padding: 128px 0 96px; } }
+    .hero h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); max-width: 18ch; }
+    .hero p { margin: 24px 0 0; font-size: 1.12rem; color: var(--muted); }
+    .hero-actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+    .btn {
+      display: inline-block; padding: 11px 20px; border-radius: 6px; text-decoration: none;
+      background: var(--accent); color: var(--paper); font-weight: 600; font-size: 15px;
+    }
+    .btn:hover { filter: brightness(1.08); }
+
+    /* Sections */
+    section.block { padding: 64px 0; border-top: 1px solid var(--rule); }
+    section.block > .wrap > h2 { font-size: 1.75rem; margin-bottom: 8px; }
+    .lede { color: var(--muted); margin: 0 0 32px; }
+    .empty { min-height: 88px; border: 1.5px dashed var(--rule); border-radius: 6px; }
+
+    /* Work */
+    .strand-title { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 40px 0 16px; }
+    .projects { display: grid; gap: 36px; margin-top: 32px; }
+    .project { border-left: 3px solid var(--accent); padding: 2px 0 2px 22px; }
+    .project-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+    .project h3 { font-size: 1.3rem; }
+    .status { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+    .project-preview { margin-top: 16px; aspect-ratio: 16 / 9; max-width: 560px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+    .project-preview img, .project-preview video { width: 100%; height: 100%; object-fit: cover; }
+    .fields { margin: 14px 0 0; display: grid; gap: 10px; max-width: var(--measure); }
+    .fields div { display: grid; gap: 2px; }
+    @media (min-width: 720px) { .fields div { grid-template-columns: 120px 1fr; gap: 16px; } }
+    .fields dt { font-size: 14px; font-weight: 600; color: var(--muted); }
+    .fields dd { margin: 0; }
+    .project-links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; font-weight: 600; }
+    .soon-list { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+    .soon-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0 14px 25px; border-bottom: 1px solid var(--rule); border-left: 3px solid var(--rule); }
+    .soon-list .t { font-family: var(--serif); font-size: 1.08rem; }
+    .soon-list .s { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+    /* Samples */
+    .samples { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { .samples { grid-template-columns: repeat(3, 1fr); } }
+    .sample { margin: 0; }
+    .sample-media { aspect-ratio: 4 / 3; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+    .sample-media img, .sample-media video { width: 100%; height: 100%; object-fit: cover; }
+    .sample-media iframe { width: 100%; height: 100%; border: 0; }
+    .sample figcaption { margin-top: 10px; font-size: 15px; }
+    .sample figcaption span { display: block; color: var(--muted); font-size: 14px; }
+
+    /* About */
+    .about p { margin: 0 0 1em; }
+
+    /* Tools */
+    .tools { display: grid; gap: 28px; margin-top: 24px; }
+    @media (min-width: 720px) { .tools { grid-template-columns: 1fr 1fr; gap: 32px 48px; } }
+    .tools h3 { font-family: var(--sans); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .tools ul { margin: 0; padding-left: 18px; color: var(--ink); }
+    .tools li { margin: 3px 0; }
+    .tools li::marker { color: var(--accent); }
+
+    /* Contact */
+    .contact { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+    .contact li { display: flex; gap: 16px; align-items: baseline; }
+    .contact .k { min-width: 88px; color: var(--muted); font-size: 15px; }
+    .contact .off { color: var(--muted); opacity: .65; }
+
+    footer.site-foot { border-top: 1px solid var(--rule); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+    footer.site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site">
+    <div class="wrap site-inner">
+      <a class="name" href="#top">Farzad Vaziri</a>
+      <nav aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. OPENING STATEMENT -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <h1>Turning data and AI into tools organisations actually use.</h1>
+        <div class="measure">
+          <p>I build and implement analytics and AI systems, and I manage the projects that get them adopted. That means starting from the question an organisation needs answered, working through the data and the model, and finishing with something people rely on day to day.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn" href="#work">See my work</a>
+          <a href="#contact">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SELECTED WORK (cards are built from the PROJECTS list in the script at the bottom) -->
+    <section class="block" id="work">
+      <div class="wrap">
+        <h2>Selected work</h2>
+        <div id="projects"></div>
+      </div>
+    </section>
+
+    <!-- 3. FEATURED SAMPLES (filled from the SAMPLES list in the script at the bottom) -->
+    <section class="block" id="samples">
+      <div class="wrap">
+        <h2>Featured samples</h2>
+        <div class="samples" id="samples-grid"></div>
+      </div>
+    </section>
+
+    <!-- 4. ABOUT -->
+    <section class="block" id="about">
+      <div class="wrap"><div class="measure about">
+        <h2>About</h2>
+        <p>I work where data, AI and delivery meet. I take a problem from the first conversation to a working tool: shaping the question, building the analysis or model, and managing the rollout so the people who need it actually use it.</p>
+        <p>I explain things in plain English, keep stakeholders close throughout, and care more about what gets adopted than what looks impressive. I most enjoy working with [[charities, policy bodies, corporates and SMEs: confirm]] that want their data to change how they make decisions.</p>
+        <!-- ACADEMIC LINES GO HERE LATER (PhD, lecturing, publications). Intentionally left out for now. -->
+      </div></div>
+    </section>
+
+    <!-- 5. WHAT I WORK WITH -->
+    <section class="block" id="tools">
+      <div class="wrap">
+        <h2>What I work with</h2>
+        <div class="tools">
+          <div>
+            <h3>Analysis and modelling</h3>
+            <ul>
+              <li>SQL</li>
+              <li>Python (pandas, scikit-learn, statsmodels)</li>
+              <li>R and Stata</li>
+              <li>Econometrics and statistical modelling</li>
+              <li>Forecasting</li>
+              <li>A/B testing and evaluation design</li>
+              <li>Advanced Excel</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Financial and economic data</h3>
+            <ul>
+              <li>Bloomberg Terminal</li>
+              <li>Public finance and economic data (ONS, World Bank, IMF)</li>
+              <li>Survey data</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Dashboards and reporting</h3>
+            <ul>
+              <li>Power BI and Tableau</li>
+              <li>Microsoft Fabric</li>
+              <li>Automated reports and Excel reporting</li>
+              <li>Executive summaries for non-technical readers</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Data platforms and cloud</h3>
+            <ul>
+              <li>Microsoft Fabric and Databricks</li>
+              <li>AWS [[confirm which services]]</li>
+              <li>Azure [[confirm]]</li>
+              <li>SQL databases and data pipelines</li>
+              <li>Version control with Git and GitHub</li>
+            </ul>
+          </div>
+          <div>
+            <h3>AI implementation</h3>
+            <ul>
+              <li>LLM applications with the OpenAI and Anthropic APIs [[confirm]]</li>
+              <li>Retrieval-augmented generation and agents [[confirm]]</li>
+              <li>Prompt and workflow design</li>
+              <li>Machine learning models in production [[confirm]]</li>
+              <li>Evaluation and governance of AI tools [[confirm]]</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Project delivery</h3>
+            <ul>
+              <li>End-to-end ownership, from scoping to adoption</li>
+              <li>Stakeholder management and requirements gathering</li>
+              <li>Agile and waterfall delivery</li>
+              <li>Vendor and budget management</li>
+              <li>Training non-technical teams</li>
+              <li>[[CV line 1: employer type, what was delivered, scale or outcome]]</li>
+              <li>[[CV line 2]]</li>
+              <li>[[CV line 3]]</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Certifications</h3>
+            <ul>
+              <li>Google Advanced Data Analytics</li>
+              <li>[[any others: confirm]]</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. GAMES (kept separate from the work above) -->
+    <section class="block" id="games">
+      <div class="wrap">
+        <h2>Games</h2>
+        <div class="empty"></div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section class="block" id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <ul class="contact">
+          <!-- [[Email forwarding for hello@farzadvaziri.com to be set up in Spaceship]] -->
+          <li><span class="k">Email</span><a href="mailto:hello@farzadvaziri.com">hello@farzadvaziri.com</a></li>
+          <!-- To activate: replace the span with <a href="[[LinkedIn URL]]">LinkedIn</a> -->
+          <li><span class="k">LinkedIn</span><span class="off" aria-disabled="true">Coming soon</span></li>
+          <!-- To activate: replace the span with <a href="[[GitHub URL]]">GitHub</a> -->
+          <li><span class="k">GitHub</span><span class="off" aria-disabled="true">Coming soon</span></li>
+          <!-- To activate: replace the span with <a href="[[Kaggle URL]]">Kaggle</a> -->
+          <li><span class="k">Kaggle</span><span class="off" aria-disabled="true">Coming soon</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Farzad Vaziri</span>
+      <span>Based in the UK</span>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       PROJECTS: the only place to edit the Selected work section.
+       One entry per project. Fields left as "" are not shown.
+
+         status   "live" or "soon"
+         strand   "Analytics", "AI implementation", "Cloud" or "Delivery"
+                  (live projects are grouped by strand once strands are set)
+         problem / did / result   one or two plain-English sentences each
+         preview  image or GIF path, e.g. "assets/previews/student-migration.gif"
+         links    dashboard, repo, notebook (full URLs)
+
+       Rule: any project that used employer data must be rebuilt on public
+       or synthetic data before it goes live.
+       Order: most business-relevant first; pure-code projects lower down.
+       ===================================================================== */
+    const PROJECTS = [
+      { id: "student-migration",      title: "UK student migration",              status: "live", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "https://github.com/farzad-vaziri/pushpull-uk-dashboards", notebook: "" } },
+      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } },
+      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "soon", strand: "", problem: "", did: "", result: "", preview: "", links: { dashboard: "", repo: "", notebook: "" } }
+    ];
+
+    /* FEATURED SAMPLES: 2–3 real outputs. Use "media" for an image/GIF,
+       or "embed" for a small self-contained HTML chart in assets/samples/. */
+    const SAMPLES = [
+      { title: "UK student migration", caption: "", media: "", embed: "", link: "" },
+      { title: "", caption: "", media: "", embed: "", link: "" },
+      { title: "", caption: "", media: "", embed: "", link: "" }
+    ];
+
+    /* ---------- rendering (no need to edit below) ---------- */
+    (function () {
+      const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+      const mediaEl = (src, alt) => {
+        if (/\.(mp4|webm)$/i.test(src)) { const v = el("video"); Object.assign(v, { src, autoplay: true, muted: true, loop: true, playsInline: true }); v.setAttribute("aria-label", alt); return v; }
+        const i = el("img"); Object.assign(i, { src, alt, loading: "lazy", decoding: "async" }); return i;
+      };
+      const link = (text, href) => { const a = el("a", null, text); a.href = href; a.target = "_blank"; a.rel = "noopener"; return a; };
+
+      // Selected work
+      const root = document.getElementById("projects");
+      const live = PROJECTS.filter(p => p.status === "live");
+      const soon = PROJECTS.filter(p => p.status !== "live");
+
+      function projectCard(p) {
+        const art = el("article", "project"); art.id = "project-" + p.id;
+        const head = el("div", "project-head");
+        head.appendChild(el("h3", null, p.title));
+        head.appendChild(el("span", "status", "Live"));
+        art.appendChild(head);
+        if (p.preview) { const f = el("div", "project-preview"); f.appendChild(mediaEl(p.preview, p.title + " preview")); art.appendChild(f); }
+        const rows = [["The problem", p.problem], ["What I did", p.did], ["The result", p.result]].filter(r => r[1]);
+        if (rows.length) {
+          const dl = el("dl", "fields");
+          rows.forEach(([k, v]) => { const d = el("div"); d.appendChild(el("dt", null, k)); d.appendChild(el("dd", null, v)); dl.appendChild(d); });
+          art.appendChild(dl);
+        }
+        const L = p.links || {};
+        const ls = [["Open live app", L.dashboard], ["View code on GitHub", L.repo], ["Notebook", L.notebook]].filter(x => x[1]);
+        if (ls.length) { const box = el("div", "project-links"); ls.forEach(([t, h]) => box.appendChild(link(t, h))); art.appendChild(box); }
+        return art;
+      }
+
+      const grouped = live.length > 0 && live.every(p => p.strand) && PROJECTS.length > 4;
+      if (grouped) {
+        [...new Set(live.map(p => p.strand))].forEach(s => {
+          root.appendChild(el("h3", "strand-title", s));
+          const g = el("div", "projects"); live.filter(p => p.strand === s).forEach(p => g.appendChild(projectCard(p))); root.appendChild(g);
+        });
+      } else {
+        const g = el("div", "projects"); live.forEach(p => g.appendChild(projectCard(p))); root.appendChild(g);
+      }
+      if (soon.length) {
+        const ul = el("ul", "soon-list");
+        soon.forEach(p => { const li = el("li"); li.id = "project-" + p.id; li.appendChild(el("span", "t", p.title)); li.appendChild(el("span", "s", "Coming soon")); ul.appendChild(li); });
+        root.appendChild(ul);
+      }
+
+      // Featured samples
+      const sg = document.getElementById("samples-grid");
+      SAMPLES.forEach(s => {
+        const fig = el("figure", "sample");
+        const frame = el("div", "sample-media");
+        if (s.embed) { const f = el("iframe"); Object.assign(f, { src: s.embed, title: s.title || "Sample", loading: "lazy" }); frame.appendChild(f); }
+        else if (s.media) frame.appendChild(mediaEl(s.media, s.title || "Sample"));
+        fig.appendChild(frame);
+        if (s.title || s.caption) {
+          const cap = el("figcaption");
+          if (s.title) cap.appendChild(s.link ? link(s.title, s.link) : el("strong", null, s.title));
+          if (s.caption) cap.appendChild(el("span", null, s.caption));
+          fig.appendChild(cap);
+        }
+        sg.appendChild(fig);
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
