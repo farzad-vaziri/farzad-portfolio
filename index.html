@@ -108,6 +108,12 @@
     section.block > .wrap > h2 { font-size: 1.75rem; margin-bottom: 8px; }
     .empty { min-height: 88px; border: 1.5px dashed var(--rule); border-radius: 6px; margin-top: 24px; }
 
+    /* Justified text for the opening statement and About */
+    @media (min-width: 720px) {
+      .hero .intro p, .about p, .doing li { text-align: justify; text-justify: inter-word; }
+      .about .measure-line { text-align: left; }
+    }
+
     /* Sample grid: 2 columns on phones, 3 on laptops */
     .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; margin-top: 28px; }
     @media (min-width: 880px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; } }
@@ -187,10 +193,6 @@
         <div class="intro measure">
           <!-- Short summary (draft, edit freely). The last sentence is from the settled copy. -->
           <p>I shape technology strategy, build data and AI systems, and lead the programmes that get them adopted. I work with leadership from the first business case through to rollout, and I still write the code. Below are live samples of my work: dashboards, AI tools and analyses you can open and explore.</p>
-        </div>
-        <div class="hero-actions">
-          <a class="btn" href="#work">Open the samples</a>
-          <a href="#contact">Get in touch</a>
         </div>
       </div>
     </section>
@@ -332,7 +334,7 @@
        or synthetic data before it goes live.
        ===================================================================== */
     const PROJECTS = [
-      { id: "student-migration",      title: "UK student migration",              status: "live", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
+      { id: "student-migration",      title: "UK student migration",              status: "live", preview: "assets/previews/student-migration.webp", question: "", action: "", dataNote: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
       { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
       { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
       { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
