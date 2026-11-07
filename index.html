@@ -338,12 +338,20 @@
        ===================================================================== */
     const PROJECTS = [
       { id: "student-migration",      title: "UK student migration",              status: "live", preview: "assets/previews/student-migration.webp", question: "", action: "", dataNote: "", links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
+      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "live", preview: "assets/previews/policy-diffusion-map.webp",
+        question: "Watch policies spread across US states and European countries, year by year.",
+        action: "Pick one of 12 policies and press play to see each place change colour as it adopts, alongside the adoption S-curve and the first and latest adopters.",
+        dataNote: "Built on public data: SPID (Boehmke et al. 2020).",
+        links: { dashboard: "https://policy-diffusion-map.streamlit.app", repo: "https://github.com/farzad-vaziri/policy-diffusion-map", notebook: "" } },
+      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "live", preview: "assets/previews/delivery-route-planner.webp",
+        question: "Finds the shortest route for a driver's stops across central London and draws it on real roads.",
+        action: "Add up to 5 postcodes in Westminster, Camden, Islington or the City. The app checks each one, works out the best visiting order from the car back to Base, and maps it.",
+        dataNote: "Public-data rebuild: OS Code-Point Open postcodes and the OpenStreetMap road network. No APIs or keys.",
+        links: { dashboard: "https://farzad-delivery-routes.streamlit.app", repo: "https://github.com/farzad-vaziri/delivery-route-planner", notebook: "" } },
       { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
       { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
       { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } }
+      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } }
     ];
 
     /* ---------- rendering (no need to edit below) ---------- */
