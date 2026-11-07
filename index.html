@@ -330,8 +330,7 @@
          preview   screenshot path, e.g. "assets/previews/student-migration.webp"
          question  one line: the question it answers
          action    one line: what the visitor can do
-         dataNote  e.g. "Built on public data." or "Synthetic data."
-         links     dashboard (the tile opens this), repo, notebook
+         links     dashboard: the live app the tile opens
 
        Rule: any project that used employer data must be rebuilt on public
        or synthetic data before it goes live.
@@ -340,26 +339,22 @@
       { id: "student-migration",      title: "UK student migration",              status: "live", preview: "assets/previews/student-migration.webp",
         question: "Ten interactive dashboards on where 1.4 million UK students go to university and how far they travel from home.",
         action: "Search any university or home area, map flows across the four nations, and explore gravity-model, spatial and event-study analysis of what drives long-distance study and who gets left behind.",
-        dataNote: "Built on public data: HESA open data, Guardian rankings and local labour-market statistics.",
-        links: { dashboard: "https://pushpull-uk.streamlit.app/", repo: "", notebook: "" } },
+        links: { dashboard: "https://pushpull-uk.streamlit.app/" } },
       { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "live", preview: "assets/previews/policy-diffusion-map.webp",
         question: "Watch policies spread across US states and European countries, year by year.",
         action: "Pick one of 12 policies and press play to see each place change colour as it adopts, alongside the adoption S-curve and the first and latest adopters.",
-        dataNote: "Built on public data: SPID (Boehmke et al. 2020).",
-        links: { dashboard: "https://policy-diffusion-map.streamlit.app", repo: "https://github.com/farzad-vaziri/policy-diffusion-map", notebook: "" } },
+        links: { dashboard: "https://policy-diffusion-map.streamlit.app" } },
       { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "live", preview: "assets/previews/delivery-route-planner.webp",
         question: "Finds the shortest route for a driver's stops across central London and draws it on real roads.",
         action: "Add up to 5 postcodes in Westminster, Camden, Islington or the City. The app checks each one, works out the best visiting order from the car back to Base, and maps it.",
-        dataNote: "Public-data rebuild: OS Code-Point Open postcodes and the OpenStreetMap road network. No APIs or keys.",
-        links: { dashboard: "https://farzad-delivery-routes.streamlit.app", repo: "https://github.com/farzad-vaziri/delivery-route-planner", notebook: "" } },
+        links: { dashboard: "https://farzad-delivery-routes.streamlit.app" } },
       { id: "crypto-market-terminal", title: "Crypto market terminal",            status: "live", preview: "assets/previews/crypto-market-terminal.webp",
         question: "A Bloomberg-style terminal for crypto and global markets, built on free public data.",
         action: "Click a coin in the watchlist to chart it, with candlesticks, volume, moving averages and Bollinger Bands, then compare trends and see the day's top movers.",
-        dataNote: "Demo, public data, not financial advice. Data from Kraken, CoinGecko and Yahoo Finance.",
-        links: { dashboard: "https://farzad-crypto-terminal.streamlit.app", repo: "https://github.com/farzad-vaziri/crypto-market-terminal", notebook: "" } },
-      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } },
-      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", preview: "", question: "", action: "", dataNote: "", links: { dashboard: "", repo: "", notebook: "" } }
+        links: { dashboard: "https://farzad-crypto-terminal.streamlit.app" } },
+      { id: "brand-positioning",      title: "Brand positioning",                 status: "soon", preview: "", question: "", action: "", links: { dashboard: "" } },
+      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", preview: "", question: "", action: "", links: { dashboard: "" } },
+      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", preview: "", question: "", action: "", links: { dashboard: "" } }
     ];
 
     /* ---------- rendering (no need to edit below) ---------- */
@@ -390,10 +385,6 @@
 
         if (p.question) tile.appendChild(el("p", null, p.question));
         if (p.action) tile.appendChild(el("p", null, p.action));
-        if (p.dataNote) tile.appendChild(el("p", "note", p.dataNote));
-        const extra = [["Code", L.repo], ["Notebook", L.notebook]].filter(x => x[1]);
-        if (extra.length) { const box = el("div", "tile-links"); extra.forEach(([t, h]) => box.appendChild(ext(el("a", null, t), h))); tile.appendChild(box); }
-
         grid.appendChild(tile);
       });
 
