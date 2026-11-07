@@ -334,6 +334,9 @@
 
        Rule: any project that used employer data must be rebuilt on public
        or synthetic data before it goes live.
+
+       Parked (add back when live): strategic-positioning,
+       "Strategic positioning by industry".
        ===================================================================== */
     const PROJECTS = [
       { id: "student-migration",      title: "UK student migration",              status: "live", preview: "assets/previews/student-migration.webp",
@@ -356,8 +359,10 @@
         question: "Where 12 luxury fashion houses sit on the dimensions that define brand positioning.",
         action: "Place brands from Hermès to Off-White on paired dimensions like Quiet↔Loud and Heritage↔Trend-led, then compare any two brands side by side.",
         links: { dashboard: "https://brand-positioning.streamlit.app" } },
-      { id: "strategic-positioning",  title: "Strategic positioning by industry", status: "soon", preview: "", question: "", action: "", links: { dashboard: "" } },
-      { id: "speech-scaling",         title: "Political speech scaling",          status: "soon", preview: "", question: "", action: "", links: { dashboard: "" } }
+      { id: "speech-scaling",         title: "Political speech scaling",          status: "live", preview: "assets/previews/speech-scaling.webp",
+        question: "Where UK parties and front-benchers stand on key policy areas, estimated from what they say in the House of Commons since 2005.",
+        action: "Pick a policy area and up to four parties or politicians, switch between monthly and quarterly views, and follow how their positions move across elections.",
+        links: { dashboard: "https://uk-speech-positions.streamlit.app" } }
     ];
 
     /* ---------- rendering (no need to edit below) ---------- */
