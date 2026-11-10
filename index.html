@@ -138,6 +138,36 @@
     .tile-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; font-weight: 600; }
     .grid-note { margin: 28px 0 0; font-size: 14px; color: var(--muted); }
 
+    /* Featured wide panel: spans the whole row, second line of the grid */
+    .feature {
+      grid-column: 1 / -1; order: 15;
+      background: color-mix(in srgb, var(--accent-soft) 45%, var(--paper));
+      border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+      border-radius: 10px; padding: 16px;
+    }
+    @media (min-width: 880px) { .feature { order: 25; padding: 28px; } }
+    .feature-top { display: grid; gap: 18px; }
+    @media (min-width: 880px) { .feature-top { grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; } }
+    .feature-main { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); background: var(--paper-2); aspect-ratio: 16 / 10; transition: border-color .15s, box-shadow .15s; }
+    .feature-main img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .feature-main:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .feature-kicker { display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+    .feature-title { color: inherit; text-decoration: none; display: inline-block; }
+    .feature-title h3 { font-size: 1.35rem; line-height: 1.25; }
+    @media (min-width: 880px) { .feature-title h3 { font-size: 1.6rem; } }
+    .feature-title:hover h3 { color: var(--accent); }
+    .feature-body .status { display: inline-block; margin-top: 8px; }
+    .feature-body p { margin: 12px 0 0; font-size: 15px; line-height: 1.6; }
+    .feature-btn { margin-top: 18px; }
+    .feature-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 20px; }
+    @media (min-width: 880px) { .feature-shots { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 24px; } }
+    .feature-shot { display: block; color: inherit; text-decoration: none; min-width: 0; }
+    .feature-shot .frame { aspect-ratio: 4 / 3; }
+    .feature-shot .frame img { object-position: top center; }
+    .feature-shot span { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+    .feature-shot:hover .frame { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .feature-shot:hover span { color: var(--accent); }
+
     /* About (settled copy) */
     .about p { margin: 16px 0 0; font-size: 1.05rem; }
     .about h3 { font-size: 1.3rem; margin: 40px 0 16px; }
@@ -365,6 +395,26 @@
         links: { dashboard: "https://uk-speech-positions.streamlit.app" } }
     ];
 
+    /* FEATURED: one wide panel on the second line of the grid
+       (after 3 cards on laptops, after 2 on phones).
+       Every image, the title and the button open the live app. */
+    const FEATURE = {
+      id: "adhd-prescribing",
+      title: "ADHD medication prescribing in England",
+      url: "https://farzad-adhd-prescribing.streamlit.app",
+      main: { src: "assets/previews/adhd-main.webp", alt: "Overview: area map, timeline and player controls" },
+      text: [
+        "An interactive dashboard of NHS ADHD medicine prescribing in England, April 2019 to August 2026: prescription items for methylphenidate, lisdexamfetamine, dexamfetamine, atomoxetine and guanfacine, per 1,000 registered patients.",
+        "Press play to watch six years of change across 106 areas, follow up to three areas on the map and timeline, and switch between GP practices, age- and sex-standardised rates and all NHS prescribers."
+      ],
+      shots: [
+        { src: "assets/previews/adhd-deprivation.webp", caption: "Prescribing by practice deprivation" },
+        { src: "assets/previews/adhd-growth.webp",      caption: "Growth by NHS region, and by medicine" },
+        { src: "assets/previews/adhd-funnel.webp",      caption: "Practice funnel: observed against expected" },
+        { src: "assets/previews/adhd-fastest.webp",     caption: "Fastest and slowest growing areas" }
+      ]
+    };
+
     /* ---------- rendering (no need to edit below) ---------- */
     (function () {
       const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
@@ -375,10 +425,11 @@
       };
 
       const grid = document.getElementById("projects");
-      PROJECTS.forEach(p => {
+      PROJECTS.forEach((p, i) => {
         const live = p.status === "live";
         const L = p.links || {};
         const tile = el("article", "tile"); tile.id = "project-" + p.id;
+        tile.style.order = i * 10;
 
         // Frame + title: one link to the live app when there is one
         const top = L.dashboard ? ext(el("a", "tile-link"), L.dashboard) : el("div", "tile-link");
@@ -395,6 +446,38 @@
         if (p.action) tile.appendChild(el("p", null, p.action));
         grid.appendChild(tile);
       });
+
+      // Featured wide panel
+      if (FEATURE && FEATURE.url) {
+        const F = FEATURE;
+        const box = el("article", "feature"); box.id = "project-" + F.id;
+        const top = el("div", "feature-top");
+        const mainLink = ext(el("a", "feature-main"), F.url);
+        mainLink.setAttribute("aria-label", "Open " + F.title);
+        mainLink.appendChild(mediaEl(F.main.src, F.main.alt));
+        top.appendChild(mainLink);
+
+        const body = el("div", "feature-body");
+        body.appendChild(el("span", "feature-kicker", "Featured"));
+        const h = ext(el("a", "feature-title"), F.url);
+        h.appendChild(el("h3", null, F.title));
+        body.appendChild(h);
+        body.appendChild(el("span", "status live", "Live"));
+        (F.text || []).forEach(t => body.appendChild(el("p", null, t)));
+        body.appendChild(ext(el("a", "btn feature-btn", "Open the dashboard"), F.url));
+        top.appendChild(body);
+        box.appendChild(top);
+
+        const strip = el("div", "feature-shots");
+        (F.shots || []).forEach(s => {
+          const a = ext(el("a", "feature-shot"), F.url);
+          const fr = el("div", "frame"); fr.appendChild(mediaEl(s.src, s.caption)); a.appendChild(fr);
+          a.appendChild(el("span", null, s.caption));
+          strip.appendChild(a);
+        });
+        box.appendChild(strip);
+        grid.appendChild(box);
+      }
 
       document.getElementById("year").textContent = new Date().getFullYear();
     })();
