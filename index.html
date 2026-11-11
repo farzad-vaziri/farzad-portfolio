@@ -138,14 +138,15 @@
     .tile-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; font-weight: 600; }
     .grid-note { margin: 28px 0 0; font-size: 14px; color: var(--muted); }
 
-    /* Featured wide panel: spans the whole row, second line of the grid */
+    /* Featured wide panels: span the whole row; position set per panel */
     .feature {
-      grid-column: 1 / -1; order: 15;
+      grid-column: 1 / -1; order: var(--order-phone, 15);
       background: color-mix(in srgb, var(--accent-soft) 45%, var(--paper));
       border: 1px solid var(--rule); border-left: 4px solid var(--accent);
       border-radius: 10px; padding: 16px;
     }
-    @media (min-width: 880px) { .feature { order: 25; padding: 28px; } }
+    @media (min-width: 880px) { .feature { order: var(--order-laptop, 25); padding: 28px; } }
+    @media (min-width: 880px) { .feature-flip .feature-top { grid-template-columns: 1fr 1.45fr; } .feature-flip .feature-main { order: 2; } }
     .feature-top { display: grid; gap: 18px; }
     @media (min-width: 880px) { .feature-top { grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; } }
     .feature-main { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); background: #f6f7f9; aspect-ratio: 1200 / 1288; transition: border-color .15s, box-shadow .15s; }
@@ -396,25 +397,53 @@
         links: { dashboard: "https://uk-speech-positions.streamlit.app" } }
     ];
 
-    /* FEATURED: one wide panel on the second line of the grid
-       (after 3 cards on laptops, after 2 on phones).
+    /* FEATURED: wide panels that span a whole row of the grid.
+       order: where the panel sits among the cards (cards are 0, 10, 20 ...).
+         laptop: 3 cards per row, so -5 = first row, 25 = after 3 cards.
+         phone:  2 cards per row, so -5 = first row, 35 = after 4 cards.
+       flip: true puts the picture on the right on laptops.
        Every image, the title and the button open the live app. */
-    const FEATURE = {
-      id: "adhd-prescribing",
-      title: "ADHD medication prescribing in England",
-      url: "https://farzad-adhd-prescribing.streamlit.app",
-      main: { src: "assets/previews/adhd-main.webp", alt: "Overview: area map, timeline and player controls" },
-      text: [
-        "An interactive dashboard of NHS ADHD medicine prescribing in England, April 2019 to August 2026: prescription items for methylphenidate, lisdexamfetamine, dexamfetamine, atomoxetine and guanfacine, per 1,000 registered patients.",
-        "Press play to watch six years of change across 106 areas, follow up to three areas on the map and timeline, and switch between GP practices, age- and sex-standardised rates and all NHS prescribers."
-      ],
-      shots: [
-        { src: "assets/previews/adhd-deprivation.webp", caption: "Prescribing by practice deprivation" },
-        { src: "assets/previews/adhd-growth.webp",      caption: "Growth by NHS region, and by medicine" },
-        { src: "assets/previews/adhd-funnel.webp",      caption: "Practice funnel: observed against expected" },
-        { src: "assets/previews/adhd-fastest.webp",     caption: "Fastest and slowest growing areas" }
-      ]
-    };
+    const FEATURES = [
+      {
+        id: "attribution-lab",
+        title: "Attribution Lab",
+        url: "https://attribution-lab.streamlit.app",
+        order: { laptop: -5, phone: -5 },
+        flip: true,
+        bg: "#0b0f1a",
+        main: { src: "assets/previews/attr-main.webp", alt: "Attribution Lab: headline numbers and customer journey flow" },
+        text: [
+          "Same conversions, 7 attribution answers, and how much budget moves depending on the model you pick.",
+          "Built on a simulated ground-truth lab, where each channel's true contribution is known, so every model, from last-click and first-click to Markov chain and Shapley, is scored against the real answer.",
+          "Filter by date, device and customer type, follow how customers move between channels, compare the seven models side by side, and see how budget and return on ad spend shift when you change model."
+        ],
+        shots: [
+          { src: "assets/previews/attr-journey.webp", caption: "How customers actually travel" },
+          { src: "assets/previews/attr-models.webp",  caption: "Seven models, one set of journeys" },
+          { src: "assets/previews/attr-budget.webp",  caption: "What the model choice does to the money" },
+          { src: "assets/previews/attr-paths.webp",   caption: "How journeys are built" }
+        ]
+      },
+      {
+        id: "adhd-prescribing",
+        title: "ADHD medication prescribing in England",
+        url: "https://farzad-adhd-prescribing.streamlit.app",
+        order: { laptop: 25, phone: 35 },
+        flip: false,
+        bg: "#f6f7f9",
+        main: { src: "assets/previews/adhd-main.webp", alt: "Overview: area map, timeline and player controls" },
+        text: [
+          "An interactive dashboard of NHS ADHD medicine prescribing in England, April 2019 to August 2026: prescription items for methylphenidate, lisdexamfetamine, dexamfetamine, atomoxetine and guanfacine, per 1,000 registered patients.",
+          "Press play to watch six years of change across 106 areas, follow up to three areas on the map and timeline, and switch between GP practices, age- and sex-standardised rates and all NHS prescribers."
+        ],
+        shots: [
+          { src: "assets/previews/adhd-deprivation.webp", caption: "Prescribing by practice deprivation" },
+          { src: "assets/previews/adhd-growth.webp",      caption: "Growth by NHS region, and by medicine" },
+          { src: "assets/previews/adhd-funnel.webp",      caption: "Practice funnel: observed against expected" },
+          { src: "assets/previews/adhd-fastest.webp",     caption: "Fastest and slowest growing areas" }
+        ]
+      }
+    ];
 
     /* ---------- rendering (no need to edit below) ---------- */
     (function () {
@@ -448,13 +477,15 @@
         grid.appendChild(tile);
       });
 
-      // Featured wide panel
-      if (FEATURE && FEATURE.url) {
-        const F = FEATURE;
-        const box = el("article", "feature"); box.id = "project-" + F.id;
+      // Featured wide panels
+      FEATURES.forEach(F => {
+        const box = el("article", "feature" + (F.flip ? " feature-flip" : "")); box.id = "project-" + F.id;
+        box.style.setProperty("--order-phone", F.order.phone);
+        box.style.setProperty("--order-laptop", F.order.laptop);
         const top = el("div", "feature-top");
         const mainLink = ext(el("a", "feature-main"), F.url);
         mainLink.setAttribute("aria-label", "Open " + F.title);
+        if (F.bg) mainLink.style.background = F.bg;
         mainLink.appendChild(mediaEl(F.main.src, F.main.alt));
         top.appendChild(mainLink);
 
@@ -472,13 +503,14 @@
         const strip = el("div", "feature-shots");
         (F.shots || []).forEach(s => {
           const a = ext(el("a", "feature-shot"), F.url);
-          const fr = el("div", "frame"); fr.appendChild(mediaEl(s.src, s.caption)); a.appendChild(fr);
+          const fr = el("div", "frame"); if (F.bg) fr.style.background = F.bg;
+          fr.appendChild(mediaEl(s.src, s.caption)); a.appendChild(fr);
           a.appendChild(el("span", null, s.caption));
           strip.appendChild(a);
         });
         box.appendChild(strip);
         grid.appendChild(box);
-      }
+      });
 
       document.getElementById("year").textContent = new Date().getFullYear();
     })();
