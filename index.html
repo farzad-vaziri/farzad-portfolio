@@ -402,6 +402,8 @@
          laptop: 3 cards per row, so -5 = first row, 25 = after 3 cards.
          phone:  2 cards per row, so -5 = first row, 35 = after 4 cards.
        flip: true puts the picture on the right on laptops.
+       fit: "contain" shows the whole main picture (spare space filled with bg);
+            leave it out to fill the frame from the top (may trim the bottom).
        Every image, the title and the button open the live app. */
     const FEATURES = [
       {
@@ -411,6 +413,7 @@
         order: { laptop: -5, phone: -5 },
         flip: true,
         bg: "#0b0f1a",
+        fit: "contain",
         main: { src: "assets/previews/attr-main.webp", alt: "Attribution Lab: headline numbers and customer journey flow" },
         text: [
           "Same conversions, 7 attribution answers, and how much budget moves depending on the model you pick.",
@@ -486,7 +489,9 @@
         const mainLink = ext(el("a", "feature-main"), F.url);
         mainLink.setAttribute("aria-label", "Open " + F.title);
         if (F.bg) mainLink.style.background = F.bg;
-        mainLink.appendChild(mediaEl(F.main.src, F.main.alt));
+        const mainImg = mediaEl(F.main.src, F.main.alt);
+        if (F.fit === "contain") { mainImg.style.objectFit = "contain"; mainImg.style.objectPosition = "center"; }
+        mainLink.appendChild(mainImg);
         top.appendChild(mainLink);
 
         const body = el("div", "feature-body");
