@@ -102,6 +102,9 @@
       background: var(--accent); color: var(--paper); font-weight: 600; font-size: 15px;
     }
     .btn:hover { filter: brightness(1.08); }
+    .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); padding: 9.5px 18.5px; }
+    .btn-outline:hover { background: var(--accent-soft); filter: none; }
+    .more { margin: 24px 0 0; }
 
     /* Sections */
     section.block { padding: 64px 0; border-top: 1px solid var(--rule); }
@@ -238,6 +241,7 @@
         <h2>Samples</h2>
         <div class="grid" id="projects"></div>
         <p class="grid-note">Live apps open in a new tab and may take up to 30 seconds to wake.</p>
+        <p class="more"><a class="btn btn-outline" href="https://www.innditech.co.uk/work.html" target="_blank" rel="noopener">See more work</a></p>
       </div>
     </section>
 
@@ -274,7 +278,6 @@
           <li><strong>Operational analytics</strong> <span>KPI design, process and efficiency analysis, automated management reporting</span></li>
           <li><strong>Customer and market insight</strong> <span>Segmentation, survey analysis, demand forecasting</span></li>
           <li><strong>AI-enabled workflows</strong> <span>Document intelligence, knowledge assistants, automation of reporting and review tasks</span></li>
-          <li><strong>Policy and economic analysis</strong> <span>Impact evaluation, public-finance and economic modelling</span></li>
         </ul>
       </div>
     </section>
@@ -320,15 +323,8 @@
       </div>
     </section>
 
-    <!-- 6. GAMES (kept separate from the work above) -->
-    <section class="block" id="games">
-      <div class="wrap">
-        <h2>Games</h2>
-        <div class="empty"></div>
-      </div>
-    </section>
 
-    <!-- 7. CONTACT -->
+    <!-- 6. CONTACT -->
     <section class="block" id="contact">
       <div class="wrap">
         <h2>Contact</h2>
@@ -367,18 +363,10 @@
        Rule: any project that used employer data must be rebuilt on public
        or synthetic data before it goes live.
 
-       Parked (add back when live): strategic-positioning,
-       "Strategic positioning by industry".
+       Every card here must also be on the InnDiTech Sample work page
+       (site map agreed 19 Nov 2026). Nothing about policy on this site.
        ===================================================================== */
     const PROJECTS = [
-      { id: "student-migration",      title: "UK student migration",              status: "live", preview: "assets/previews/student-migration.webp",
-        question: "Ten interactive dashboards on where 1.4 million UK students go to university and how far they travel from home.",
-        action: "Search any university or home area, map flows across the four nations, and explore gravity-model, spatial and event-study analysis of what drives long-distance study and who gets left behind.",
-        links: { dashboard: "https://pushpull-uk.streamlit.app/" } },
-      { id: "policy-diffusion-map",   title: "Policy diffusion map, US and EU",   status: "live", preview: "assets/previews/policy-diffusion-map.webp",
-        question: "Watch policies spread across US states and European countries, year by year.",
-        action: "Pick one of 12 policies and press play to see each place change colour as it adopts, alongside the adoption S-curve and the first and latest adopters.",
-        links: { dashboard: "https://policy-diffusion-map.streamlit.app" } },
       { id: "delivery-route-planner", title: "Dynamic delivery route planner",    status: "live", preview: "assets/previews/delivery-route-planner.webp",
         question: "Finds the shortest route for a driver's stops across central London and draws it on real roads.",
         action: "Add up to 5 postcodes in Westminster, Camden, Islington or the City. The app checks each one, works out the best visiting order from the car back to Base, and maps it.",
@@ -387,14 +375,22 @@
         question: "A Bloomberg-style terminal for crypto and global markets, built on free public data.",
         action: "Click a coin in the watchlist to chart it, with candlesticks, volume, moving averages and Bollinger Bands, then compare trends and see the day's top movers.",
         links: { dashboard: "https://farzad-crypto-terminal.streamlit.app" } },
-      { id: "brand-positioning",      title: "Brand positioning",                 status: "live", preview: "assets/previews/brand-positioning.webp",
-        question: "Where 12 luxury fashion houses sit on the dimensions that define brand positioning.",
-        action: "Place brands from Hermès to Off-White on paired dimensions like Quiet↔Loud and Heritage↔Trend-led, then compare any two brands side by side.",
-        links: { dashboard: "https://brand-positioning.streamlit.app" } },
-      { id: "speech-scaling",         title: "UK Speech Positions",               status: "live", preview: "assets/previews/speech-scaling.webp",
-        question: "Where UK parties and front-benchers stand on key policy areas, estimated from what they say in the House of Commons since 2005.",
-        action: "Pick a policy area and up to four parties or politicians, switch between monthly and quarterly views, and follow how their positions move across elections.",
-        links: { dashboard: "https://uk-speech-positions.streamlit.app" } }
+      { id: "clinic-no-show-scheduler", title: "Clinic no-show scheduler",        status: "live", preview: "assets/previews/clinic-no-show-scheduler.webp",
+        question: "Which patients won't turn up, and what should a clinic do about it?",
+        action: "Predict no-shows, then simulate a clinic session to find the overbooking and reminder plan that balances idle time against waiting.",
+        links: { dashboard: "https://clinic-no-show-scheduler.streamlit.app" } },
+      { id: "basket-cross-sell",      title: "Basket and cross-sell",             status: "live", preview: "assets/previews/basket-cross-sell.webp",
+        question: "Which products sell together?",
+        action: "Explore two years of a UK online retailer's orders to find product pairs and families, get cross-sell recommendations, and spot the items most often returned.",
+        links: { dashboard: "https://basket-cross-sell.streamlit.app" } },
+      { id: "shift-rota-optimiser",   title: "Shift rota optimiser",              status: "live", preview: "assets/previews/shift-rota-optimiser.webp",
+        question: "How do you build a fair rota that covers every half-hour at least cost?",
+        action: "Set the rules, let the optimiser schedule the staff, and see the trade-off between cost and understaffing.",
+        links: { dashboard: "https://shift-rota-optimiser.streamlit.app" } },
+      { id: "it-incident-predictor",  title: "IT incident predictor",             status: "live", preview: "assets/previews/it-incident-predictor.webp",
+        question: "Which IT tickets will miss their SLA?",
+        action: "A model trained on a real ServiceNow log flags risky tickets the moment they open, ranks the live queue, and maps where tickets bounce between teams.",
+        links: { dashboard: "https://it-incident-predictor.streamlit.app" } }
     ];
 
     /* FEATURED: wide panels that span a whole row of the grid.
@@ -428,23 +424,23 @@
         ]
       },
       {
-        id: "adhd-prescribing",
-        title: "ADHD medication prescribing in England",
-        url: "https://farzad-adhd-prescribing.streamlit.app",
+        id: "bank-health-monitor",
+        title: "Bank Health Monitor",
+        url: "https://bank-health-monitor.streamlit.app",
         order: { laptop: 25, phone: 35 },
         flip: false,
-        bg: "#f5f7f9",
+        bg: "#0b1220",
         fit: "contain",
-        main: { src: "assets/previews/adhd-main.webp", alt: "Overview: area map, timeline and player controls" },
+        main: { src: "assets/previews/bank-main.webp", alt: "Bank Health Monitor: headline numbers and where every US bank sat before the 2023 failures" },
         text: [
-          "An interactive dashboard of NHS ADHD medicine prescribing in England, April 2019 to August 2026: prescription items for methylphenidate, lisdexamfetamine, dexamfetamine, atomoxetine and guanfacine, per 1,000 registered patients.",
-          "Press play to watch six years of change across 106 areas, follow up to three areas on the map and timeline, and switch between GP practices, age- and sex-standardised rates and all NHS prescribers."
+          "The signals that marked Silicon Valley Bank out before it collapsed (uninsured deposits, unrealised losses, thin capital) applied to every US bank.",
+          "Rank banks on run vulnerability, see how a model trained on the 2008 failure wave scored the banks that failed in 2023, and drill into any single bank's filings."
         ],
         shots: [
-          { src: "assets/previews/adhd-deprivation.webp", caption: "Prescribing by practice deprivation" },
-          { src: "assets/previews/adhd-growth.webp",      caption: "Growth by NHS region, and by medicine" },
-          { src: "assets/previews/adhd-funnel.webp",      caption: "Practice funnel: observed against expected" },
-          { src: "assets/previews/adhd-fastest.webp",     caption: "Fastest and slowest growing areas" }
+          { src: "assets/previews/bank-ranking.webp", caption: "Which banks the model ranks riskiest" },
+          { src: "assets/previews/bank-pr.webp",      caption: "How well the model finds failures" },
+          { src: "assets/previews/bank-2023.webp",    caption: "The 2023 failures, ranked in advance" },
+          { src: "assets/previews/bank-drill.webp",   caption: "Any bank's filings over time" }
         ]
       }
     ];
