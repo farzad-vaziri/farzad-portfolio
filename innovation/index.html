@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Innovation Lab | Farzad Vaziri</title>
+  <!-- Unlisted page: shared by direct link only. Nothing on the front page links here. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Games, simulations and maps you can play with: live apps by Farzad Vaziri.">
+  <meta name="theme-color" content="#fff4dc">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fff4dc;
+      --ink: #111111;
+      --card: #ffffff;
+      --muted: #3b3b3b;
+      --pink: #ff3d8b;
+      --yellow: #ffd23f;
+      --cobalt: #2445ff;
+      --orange: #ff6b1a;
+      --mint: #1fd8a4;
+      --violet: #8b46ff;
+      --line: 3px;
+      --shadow: 8px 8px 0 var(--ink);
+      --display: "Archivo Black", "Arial Black", "Helvetica Neue", Impact, sans-serif;
+      --body: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141414;
+        --ink: #f6f1e6;
+        --card: #1e1e1e;
+        --muted: #d6d0c4;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: var(--body); font-size: 17px; line-height: 1.55;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .top { border-bottom: var(--line) solid var(--ink); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+    .name { font-family: var(--display); font-size: 1.05rem; letter-spacing: .02em; text-decoration: none; text-transform: uppercase; }
+    .tag { font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .12em; background: var(--yellow); color: #111; border: var(--line) solid var(--ink); padding: 4px 10px; transform: rotate(-2deg); }
+
+    /* Hero poster */
+    .hero { position: relative; overflow: hidden; padding: 64px 0 72px; }
+    .hero h1 {
+      font-family: var(--display); font-weight: 400; text-transform: uppercase;
+      font-size: clamp(2.4rem, 10.5vw, 9rem); line-height: .86; letter-spacing: -.02em; margin: 0;
+      position: relative; z-index: 1;
+    }
+    .hero h1 .l2 { display: inline-block; background: var(--pink); color: #111; padding: 0 .12em; margin-top: .08em; border: var(--line) solid var(--ink); box-shadow: var(--shadow); transform: rotate(-1.5deg); }
+    .hero p { max-width: min(36em, 60%); font-size: 1.2rem; margin: 40px 0 0; position: relative; z-index: 1; }
+    .shape { position: absolute; border: var(--line) solid var(--ink); z-index: 0; }
+    .s1 { width: 220px; height: 220px; border-radius: 50%; background: var(--yellow); right: 6%; top: 34px; }
+    .s2 { width: 150px; height: 150px; background: var(--cobalt); right: 21%; top: 180px; transform: rotate(14deg); }
+    .s3 { width: 120px; height: 60px; border-radius: 120px 120px 0 0; background: var(--mint); right: 3%; top: 270px; }
+    @media (max-width: 1100px) {
+      .s1 { width: 160px; height: 160px; top: 20px; right: 3%; }
+      .s2 { width: 100px; height: 100px; top: 150px; right: 14%; }
+      .s3 { top: 210px; width: 90px; height: 45px; }
+    }
+    @media (max-width: 760px) {
+      .hero { padding: 40px 0 48px; }
+      .s1 { width: 90px; height: 90px; right: -24px; top: -20px; }
+      .s2, .s3 { display: none; }
+      .hero p { max-width: none; font-size: 1.05rem; margin-top: 28px; }
+    }
+
+    /* Section titles */
+    .stripe { font-family: var(--display); text-transform: uppercase; font-size: 1.1rem; letter-spacing: .04em; display: inline-block; background: var(--ink); color: var(--paper); padding: 6px 14px; margin: 0 0 28px; transform: rotate(-1deg); }
+
+    /* LIVE sticker */
+    .live { display: inline-block; font-family: var(--display); font-size: .72rem; letter-spacing: .1em; background: var(--mint); color: #111; border: 2px solid #111; padding: 3px 8px 2px; transform: rotate(4deg); vertical-align: middle; margin-left: 10px; }
+
+    /* Featured panels */
+    .feature {
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: start;
+      grid-template-areas: "media text" "thumbs thumbs";
+      border: var(--line) solid var(--ink); box-shadow: 12px 12px 0 var(--ink);
+      padding: 28px; margin: 0 0 64px; color: #111;
+    }
+    .feature.pink { background: var(--pink); }
+    .feature.cobalt { background: var(--cobalt); color: #fff; }
+    .feature.flip { grid-template-columns: 1fr 1.15fr; grid-template-areas: "text media" "thumbs thumbs"; }
+    .f-media { grid-area: media; }
+    .f-text { grid-area: text; }
+    .f-media { display: flex; flex-direction: column; gap: 16px; }
+    .frame { border: var(--line) solid #111; background: #f6f2ea; overflow: hidden; }
+    .frame img { width: 100%; height: auto; }
+    .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: -10px; grid-area: thumbs; }
+    .thumbs a { text-decoration: none; display: block; }
+    .thumbs .frame { aspect-ratio: 4 / 3; border-width: 2px; }
+    .thumbs .frame img { width: 100%; height: 100%; object-fit: cover; }
+    .thumbs span { display: block; font-size: .85rem; font-weight: 700; margin-top: 6px; line-height: 1.3; }
+    .f-text h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.8rem, 3.6vw, 2.9rem); line-height: .98; margin: 6px 0 18px; }
+    .f-text h2 a { text-decoration: none; }
+    .kicker { font-weight: 700; text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; }
+    .f-text p { margin: 0 0 14px; font-size: 1.08rem; }
+    .btn {
+      display: inline-block; margin-top: 10px; font-family: var(--display); text-transform: uppercase; font-size: 1rem; letter-spacing: .03em;
+      background: var(--yellow); color: #111; border: var(--line) solid #111; box-shadow: 5px 5px 0 #111; padding: 12px 20px; text-decoration: none;
+      transition: transform .12s, box-shadow .12s;
+    }
+    .btn:hover, .btn:focus-visible { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #111; }
+    @media (max-width: 860px) {
+      .feature, .feature.flip { grid-template-columns: 1fr; grid-template-areas: "media" "text" "thumbs"; padding: 18px; gap: 20px; box-shadow: 8px 8px 0 var(--ink); }
+      .thumbs { grid-template-columns: repeat(2, 1fr); margin-top: 6px; }
+    }
+
+    /* Cards */
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 36px; }
+    .card { background: var(--card); border: var(--line) solid var(--ink); box-shadow: var(--shadow); display: flex; flex-direction: column; }
+    .card .band { height: 18px; border-bottom: var(--line) solid var(--ink); }
+    .card .frame { border: none; border-bottom: var(--line) solid var(--ink); aspect-ratio: 4 / 3; }
+    .card .frame img { width: 100%; height: 100%; object-fit: cover; }
+    .card .body { padding: 18px 20px 22px; }
+    .card h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.45rem; line-height: 1.05; margin: 0 0 12px; }
+    .card h3 a { text-decoration: none; }
+    .card p { margin: 0 0 8px; color: var(--muted); }
+    .card p.q { color: var(--ink); font-weight: 700; }
+    .c-yellow .band { background: var(--yellow); }
+    .c-orange .band { background: var(--orange); }
+    .c-mint .band { background: var(--mint); }
+    .c-violet .band { background: var(--violet); }
+    .card:nth-child(odd) { transform: rotate(-.6deg); }
+    .card:nth-child(even) { transform: rotate(.6deg); }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; gap: 32px; }
+      .card:nth-child(n) { transform: none; }
+    }
+
+    .note { margin: 48px 0 0; font-weight: 500; }
+    footer { border-top: var(--line) solid var(--ink); margin-top: 72px; }
+    footer .wrap { padding-top: 22px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .95rem; }
+    main section { margin-top: 24px; }
+    @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="name" href="/">Farzad Vaziri</a>
+      <span class="tag">Innovation lab</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="shape s1" aria-hidden="true"></div>
+      <div class="shape s2" aria-hidden="true"></div>
+      <div class="shape s3" aria-hidden="true"></div>
+      <div class="wrap">
+        <h1 id="title"><span class="l1">Innovation</span><br><span class="l2">Lab</span></h1>
+        <p>Games, simulations and maps you can play with, not just read. Each one is a live app: open it, change something, and watch what happens.</p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <h2 class="stripe">Play</h2>
+      <div id="features"></div>
+
+      <h2 class="stripe">Explore</h2>
+      <div class="grid" id="cards"></div>
+
+      <p class="note">Live apps open in a new tab and may take up to 30 seconds to wake.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Farzad Vaziri</span>
+      <span>Based in the UK</span>
+    </div>
+  </footer>
+
+  <script>
+    /* Featured panels. Images live in innovation/assets/. Every image, the title and the button open the app. */
+    const FEATURES = [
+      {
+        id: "fashion-market-game-single-player",
+        title: "Fashion Market Game: Single Player",
+        kicker: "Play it yourself",
+        colour: "pink", flip: false,
+        url: "https://fashion-market-game-single-player.streamlit.app",
+        main: { src: "assets/fmsp-main.webp", alt: "Fashion Market Game: Single Player, building your own label and its place on the identity map" },
+        text: [
+          "Can you outsmart three rival fashion brands?",
+          "Build your own label, set its identity, and steer it through four seasons of shifting tastes and market shocks."
+        ],
+        shots: [
+          { src: "assets/fmsp-rivals.webp", caption: "Three computer-run rivals" },
+          { src: "assets/fmsp-shock.webp",  caption: "A shock lands and shoppers move" },
+          { src: "assets/fmsp-race.webp",   caption: "The share race" },
+          { src: "assets/fmsp-board.webp",  caption: "Stock, waste and the leaderboard" }
+        ]
+      },
+      {
+        id: "fashion-market-game",
+        title: "The Fashion Market Game",
+        kicker: "A classroom game",
+        colour: "cobalt", flip: true,
+        url: "https://fashion-market-game.streamlit.app",
+        main: { src: "assets/fmg-main.webp", alt: "The Fashion Market Game: three student brands and the season stepper" },
+        text: [
+          "What happens when three student teams launch rival fashion brands?",
+          "Step through a simulated classroom game season by season, watch market shocks hit, and see which brand identity wins the customers."
+        ],
+        shots: [
+          { src: "assets/fmg-decisions.webp", caption: "What each team chose" },
+          { src: "assets/fmg-race.webp",      caption: "Share of shoppers, season by season" },
+          { src: "assets/fmg-map.webp",       caption: "Where brands and shoppers sit" },
+          { src: "assets/fmg-heatmap.webp",   caption: "Who won which shoppers" }
+        ]
+      }
+    ];
+
+    /* Cards: title, two plain lines, one app link. */
+    const CARDS = [
+      { id: "uk-fashion-map", title: "UK Fashion Map", colour: "yellow",
+        preview: "assets/uk-fashion-map.webp",
+        question: "Where are the UK's fashion businesses, from design studios to mills, garment factories, shoemakers and shops?",
+        action: "Switch between design, textiles, clothing, footwear and retail to watch the map change, and look up any place.",
+        url: "https://uk-fashion-map.streamlit.app" },
+      { id: "checkout-queue-simulator", title: "Checkout Queue Simulator", colour: "orange",
+        preview: "assets/checkout-queue-simulator.webp",
+        question: "How many tills should a supermarket open?",
+        action: "Watch a simulated store's queues build through the day, change the staffing, and find the plan that balances staff cost against customers walking away.",
+        url: "https://checkout-queue-simulator.streamlit.app" },
+      { id: "single-cell-atlas", title: "Single-Cell Atlas", colour: "mint",
+        preview: "assets/single-cell-atlas.webp",
+        question: "What does a single-cell experiment reveal?",
+        action: "Explore thousands of immune cells on an interactive map, see the genes that define each cell type, and watch how analysis choices change the picture.",
+        url: "https://single-cell-atlas.streamlit.app" },
+      { id: "strategic-positioning", title: "Strategic Positioning", colour: "violet",
+        preview: "assets/strategic-positioning.webp",
+        question: "Who moved where in their market?",
+        action: "Watch supermarkets, airlines and mobile networks shift on price and quality over ten years, compare any two players, and see the evidence behind each position.",
+        url: "https://strategic-positioning.streamlit.app" }
+    ];
+
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const ext = 'target="_blank" rel="noopener"';
+
+    document.getElementById("features").innerHTML = FEATURES.map(f => `
+      <article class="feature ${f.colour}${f.flip ? " flip" : ""}" id="${f.id}">
+        <div class="f-media">
+          <a class="frame" href="${f.url}" ${ext}><img src="${f.main.src}" alt="${esc(f.main.alt)}"></a>
+        </div>
+        <div class="f-text">
+          <div class="kicker">${esc(f.kicker)}</div>
+          <h2><a href="${f.url}" ${ext}>${esc(f.title)}</a> <span class="live">Live</span></h2>
+          ${f.text.map(t => `<p>${esc(t)}</p>`).join("")}
+          <a class="btn" href="${f.url}" ${ext}>Open the game</a>
+        </div>
+        <div class="thumbs">
+          ${f.shots.map(s => `<a href="${f.url}" ${ext}><div class="frame"><img src="${s.src}" alt="${esc(s.caption)}" loading="lazy"></div><span>${esc(s.caption)}</span></a>`).join("")}
+        </div>
+      </article>`).join("");
+
+    document.getElementById("cards").innerHTML = CARDS.map(c => `
+      <article class="card c-${c.colour}" id="${c.id}">
+        <div class="band" aria-hidden="true"></div>
+        <a class="frame" href="${c.url}" ${ext}><img src="${c.preview}" alt="${esc(c.title)}" loading="lazy"></a>
+        <div class="body">
+          <h3><a href="${c.url}" ${ext}>${esc(c.title)}</a> <span class="live">Live</span></h3>
+          <p class="q">${esc(c.question)}</p>
+          <p>${esc(c.action)}</p>
+        </div>
+      </article>`).join("");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
