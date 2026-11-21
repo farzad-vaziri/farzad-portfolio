@@ -140,6 +140,23 @@
       .card:nth-child(n) { transform: none; }
     }
 
+    /* Playground square: links to the Adobe Express Playground page */
+    .pg { position: absolute; z-index: 2; container-type: size; display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none; border: var(--line) solid #111; padding: 16px 16px 14px;
+      font-family: var(--display); text-transform: uppercase; line-height: .9; transition: transform .12s, box-shadow .12s; }
+    .pg .w { font-size: 19cqw; letter-spacing: -.01em; }
+    .pg .go { font-family: var(--body); font-weight: 700; font-size: .85rem; letter-spacing: .12em; }
+    .pg:focus-visible { outline: 4px solid var(--pink); outline-offset: 4px; }
+
+    .pg { width: 200px; height: 200px; background: #111; color: var(--yellow); right: 20%; top: 170px; transform: rotate(10deg); box-shadow: 8px 8px 0 var(--pink); border-color: #111; }
+    .pg:hover { transform: rotate(10deg) translate(-3px,-3px); box-shadow: 11px 11px 0 var(--pink); }
+    .pg .go { color: #fff; }
+    @media (prefers-color-scheme: dark) { .pg { border-color: var(--ink); } }
+    @media (max-width: 1100px) { .pg { width: 160px; height: 160px; right: 13%; top: 140px; } }
+    @media (max-width: 760px) { .pg { transform: rotate(-3deg); } .pg:hover { transform: rotate(-3deg) translate(-3px,-3px); } }
+
+    @media (max-width: 760px) { .pg { position: relative; right: auto; top: auto; width: 170px; height: 170px; margin: 32px 0 6px 4px; } }
+
     .note { margin: 48px 0 0; font-weight: 500; }
     footer { border-top: var(--line) solid var(--ink); margin-top: 72px; }
     footer .wrap { padding-top: 22px; padding-bottom: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-size: .95rem; }
@@ -158,11 +175,11 @@
   <main>
     <section class="hero" aria-labelledby="title">
       <div class="shape s1" aria-hidden="true"></div>
-      <div class="shape s2" aria-hidden="true"></div>
       <div class="shape s3" aria-hidden="true"></div>
       <div class="wrap">
         <h1 id="title"><span class="l1">Innovation</span><br><span class="l2">Lab</span></h1>
         <p>Games, simulations and maps you can play with, not just read. Each one is a live app: open it, change something, and watch what happens.</p>
+        <a class="pg" href="https://new.express.adobe.com/webpage/6thkpFJlqPB2x" target="_blank" rel="noopener"><span class="w">Play<br>ground</span><span class="go">Open &#8599;</span></a>
       </div>
     </section>
 
